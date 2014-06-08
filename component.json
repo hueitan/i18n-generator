@@ -1,0 +1,20 @@
+{
+  "name": "i18n-generator",
+  "repo": "https://github.com/huei90/i18n-generator",
+  "description": "Easy your i18n file => i18n generator for node",
+  "version": "0.0.1",
+  "keywords": [
+    "i18n-generator",
+    "i18n",
+    "json",
+    "localization"
+  ],
+  "dependencies": {
+  },
+  "development": {
+  },
+  "scripts": [
+      "i18n-generator.js"
+  ],
+  "license": "MIT"
+}
