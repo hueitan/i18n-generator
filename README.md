@@ -5,7 +5,7 @@ Easy your i18n file => i18n generator for node
 ## Getting Started
 Install the module with: `npm install -g i18n-generator`
 
-node.js
+**node.js**
 
 ```javascript
 var i18nGenerator = require('i18n-generator');
@@ -16,16 +16,15 @@ var inputFile = 'input.txt',
 i18nGenerator(inputFile, outputPath);
 ```
 
-cli
+**cli**
 
 ```bash
 $ i18n input.txt output
 ```
 
-Workflow
+## Workflow
 
-input file
-
+**input file**
 ```
 i18n=> | en | zh_TW | de | my
 you | you | 你 | Sie | kamu
@@ -35,19 +34,19 @@ eat | eat | 吃 | essen | makan
 ilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github
 ```
 
-output(de.json)
+**output(de.json)**
 ```js
 {"you":"Sie","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"}
 ```
-output(en.json)
+**output(en.json)**
 ```js
 {"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github"}
 ```
-output(my.json)
+**output(my.json)**
 ```js
 {"you":"kamu","I":"Saya","love":"cinta","eat":"makan","ilovegithub":"Saya cinta pada Github"}
 ```
-output(zh_TW.json)
+**output(zh_TW.json)**
 ```js
 {"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"}
 ```
