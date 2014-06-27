@@ -22,13 +22,14 @@
   },
   "license": "MIT",
   "preferGlobal": "true",
-  "keywords":[
+  "keywords": [
     "i18n-generator",
     "i18n",
     "json",
     "localization"
   ],
   "dependencies": {
+    "js-beautify": "^1.5.1",
     "multiline": "~0.3.4"
   },
   "devDependencies": {

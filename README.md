@@ -14,6 +14,13 @@ var inputFile = 'input.txt',
     outputPath = 'output';
 
 i18nGenerator(inputFile, outputPath);
+
+// js-beautify your json
+i18nGenerator(inputFile, outputPath, true);
+// or given js-beautify options
+i18nGenerator(inputFile, outputPath, { indent_size: 2 });
+
+// options => https://github.com/beautify-web/js-beautify#options
 ```
 
 **cli**

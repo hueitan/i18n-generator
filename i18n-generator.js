@@ -22,7 +22,8 @@
  * data = require('./data.js');
  */
 
-var fs = require('fs');
+var fs = require('fs'),
+    beautify = require('js-beautify').js_beautify;
 
 var variableName = {
     rootPath: 'rootPath',
@@ -74,17 +75,21 @@ function i18nGenerating(data) {
 
 }
 
-function i18nGenerate(output) {
+function i18nGenerate(output, options) {
 
     for (var lang in variable.i18n) {
         var writeText = JSON.stringify(variable.i18n[lang]);
+
+        if (options) {
+            writeText = beautify(writeText, options);
+        }
 
         fs.writeFileSync(output + '/' + lang + '.json', writeText);
 
     }
 
 }
-module.exports = function (input, output) {
+module.exports = function (input, output, beautifyOptions) {
 
     var data =  fs.readFileSync(input);
     var isExist = fs.existsSync(output);
@@ -110,8 +115,9 @@ module.exports = function (input, output) {
         i18nGenerating(remaining);
     }
 
-    i18nGenerate(output);
+    i18nGenerate(output, beautifyOptions || null);
 
 };
 
 // module.exports('test/input.txt', 'test/temp');
+// module.exports('test/input.txt', 'test/temp', { indent_size: 2 });
