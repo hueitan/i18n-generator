@@ -3,31 +3,54 @@
 Easy your i18n file => i18n generator for node
 
 ## Getting Started
-Install the module with: `npm install i18n-generator`
+Install the module with: `npm install -g i18n-generator`
+
+node.js
 
 ```javascript
 var i18nGenerator = require('i18n-generator');
-i18nGenerator.awesome(); // "awesome"
+
+var inputFile = 'input.txt',
+    outputPath = 'output';
+
+i18nGenerator(inputFile, outputPath);
 ```
 
-Install with cli command
+cli
 
 ```bash
-$ npm install -g i18n-generator
-$ i18n-generator -h
+$ i18n input.txt output
 ```
 
-## Documentation
-_(Coming soon)_
+Workflow
 
-## Examples
-_(Coming soon)_
+input file
 
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+```
+i18n=> | en | zh_TW | de | my
+you | you | 你 | Sie | kamu
+I | I | 我 | ich | Saya
+love | love | 喜歡 | liebe | cinta
+eat | eat | 吃 | essen | makan
+ilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github
+```
 
-## Release History
-_(Nothing yet)_
+output(de.json)
+```js
+{"you":"Sie","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"}
+```
+output(en.json)
+```js
+{"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github"}
+```
+output(my.json)
+```js
+{"you":"kamu","I":"Saya","love":"cinta","eat":"makan","ilovegithub":"Saya cinta pada Github"}
+```
+output(zh_TW.json)
+```js
+{"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"}
+```
 
 ## License
 Copyright (c) 2014 Huei Tan. Licensed under the MIT license.
