@@ -87,7 +87,12 @@ function i18nGenerate(output) {
 module.exports = function (input, output) {
 
     var data =  fs.readFileSync(input);
+    var isExist = fs.existsSync(output);
     var remaining = '';
+
+    if (!isExist) {
+        fs.mkdirSync(output);
+    }
 
     remaining += data;
     var index = remaining.indexOf('\n');
@@ -109,4 +114,4 @@ module.exports = function (input, output) {
 
 };
 
-// module.exports('test/input.txt', 'test/temp');
+module.exports('test/input.txt', 'test/temp');

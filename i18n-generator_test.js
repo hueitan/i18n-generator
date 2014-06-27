@@ -31,12 +31,6 @@ exports.i18nGenerator = {
   generate: function (test) {
       test.expect(4);
 
-      var isExist = fs.existsSync('./test/temp');
-
-      if (!isExist) {
-          fs.mkdirSync('./test/temp');
-      }
-
       i18nGenerator('test/input.txt', 'test/temp');
 
       var en = fs.existsSync('./test/temp/de.json'),
