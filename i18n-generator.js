@@ -114,4 +114,4 @@ module.exports = function (input, output) {
 
 };
 
-module.exports('test/input.txt', 'test/temp');
+// module.exports('test/input.txt', 'test/temp');
