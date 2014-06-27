@@ -41,17 +41,7 @@ function readLines(input, output, func, func2) {
     var remaining = '';
 
     input.on('data', function (data) {
-        remaining += data;
-        var index = remaining.indexOf('\n');
-        var last = 0;
-        while (index > -1) {
-            var line = remaining.substring(last, index);
-            last = index + 1;
-            func(line);
-            index = remaining.indexOf('\n', last);
-        }
 
-        remaining = remaining.substring(last);
     });
 
     input.on('end', function () {
@@ -59,7 +49,7 @@ function readLines(input, output, func, func2) {
             func(remaining);
         } else {
             // console.log(variable);
-            func2(output);
+
         }
     });
 }
@@ -102,21 +92,44 @@ function i18nGenerating(data) {
 }
 
 function i18nGenerate(output) {
+    console.log('i18n start')
     for (var lang in variable.i18n) {
         var writeText = JSON.stringify(variable.i18n[lang]);
 
         // should change it to stream
-        fs.writeFile(output + '/' + lang + '.json', writeText, function (err) {
-            if (err) {
-                throw err;
-            }
-        });
+        fs.writeFileSync(output + '/' + lang + '.json', writeText);
+            console.log('i18n start wriet' + lang)
+
+        console.log('i18n write: ' + lang)
     }
 
     console.log('i18n file generator');
 }
 module.exports = function (input, output) {
-    readLines(fs.createReadStream(input), output, i18nGenerating, i18nGenerate);
+    // readLines(fs.createReadStream(input), output, i18nGenerating, i18nGenerate);
+console.log('start io')
+    var data =  fs.readFileSync(input);
+    var remaining = '';
+
+    remaining += data;
+    var index = remaining.indexOf('\n');
+    var last = 0;
+    while (index > -1) {
+        var line = remaining.substring(last, index);
+        last = index + 1;
+        i18nGenerating(line);
+        index = remaining.indexOf('\n', last);
+    }
+
+    remaining = remaining.substring(last);
+
+    if (remaining.length > 0) {
+        i18nGenerating(remaining);
+    }
+
+    i18nGenerate(output);
+
+    console.log('end io')
 };
 
-// module.exports('test/input.txt', 'test/temp');
+module.exports('test/input.txt', 'test/temp');
