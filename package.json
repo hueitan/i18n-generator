@@ -1,6 +1,6 @@
 {
   "name": "i18n-generator",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Easy your i18n file => i18n generator for node",
   "main": "i18n-generator.js",
   "bin": {
