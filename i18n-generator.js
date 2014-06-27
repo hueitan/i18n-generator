@@ -37,23 +37,6 @@ var variable = {
     i18n: {}
 };
 
-function readLines(input, output, func, func2) {
-    var remaining = '';
-
-    input.on('data', function (data) {
-
-    });
-
-    input.on('end', function () {
-        if (remaining.length > 0) {
-            func(remaining);
-        } else {
-            // console.log(variable);
-
-        }
-    });
-}
-
 function i18nGenerating(data) {
 
     var output;
@@ -92,22 +75,17 @@ function i18nGenerating(data) {
 }
 
 function i18nGenerate(output) {
-    console.log('i18n start')
+
     for (var lang in variable.i18n) {
         var writeText = JSON.stringify(variable.i18n[lang]);
 
-        // should change it to stream
         fs.writeFileSync(output + '/' + lang + '.json', writeText);
-            console.log('i18n start wriet' + lang)
 
-        console.log('i18n write: ' + lang)
     }
 
-    console.log('i18n file generator');
 }
 module.exports = function (input, output) {
-    // readLines(fs.createReadStream(input), output, i18nGenerating, i18nGenerate);
-console.log('start io')
+
     var data =  fs.readFileSync(input);
     var remaining = '';
 
@@ -129,7 +107,6 @@ console.log('start io')
 
     i18nGenerate(output);
 
-    console.log('end io')
 };
 
-module.exports('test/input.txt', 'test/temp');
+// module.exports('test/input.txt', 'test/temp');
