@@ -34,6 +34,7 @@ var variableName = {
 var variable = {
     rootPath: null,
     number: null,
+    split: '|',
     language: [],
     i18n: {}
 };
@@ -58,7 +59,7 @@ function i18nGenerating(data) {
         */
 
     } else {
-        output = data.split('|');
+        output = data.split(variable.split);
 
         if (output[0].indexOf(variableName.i18nGo) !== -1) {
             for (var i = 1; i < output.length; i++) {
@@ -84,16 +85,21 @@ function i18nGenerate(output, options) {
             writeText = beautify(writeText, options);
         }
 
-        fs.writeFileSync(output + '/' + lang + '.json', writeText);
+        fs.writeFileSync(output + '/' + lang + '.json', writeText, { flag: 'w'});
 
     }
 
 }
-module.exports = function (input, output, beautifyOptions) {
+
+module.exports = function (input, output, options, split) {
 
     var data =  fs.readFileSync(input);
     var isExist = fs.existsSync(output);
     var remaining = '';
+
+    if (split) {
+        variable.split = split;
+    }
 
     if (!isExist) {
         fs.mkdirSync(output);
@@ -115,9 +121,9 @@ module.exports = function (input, output, beautifyOptions) {
         i18nGenerating(remaining);
     }
 
-    i18nGenerate(output, beautifyOptions || null);
+    i18nGenerate(output, options || null);
 
 };
 
 // module.exports('test/input.txt', 'test/temp');
-// module.exports('test/input.txt', 'test/temp', { indent_size: 2 });
+// module.exports('test/inputComma.txt', 'test/temp', null, ',');

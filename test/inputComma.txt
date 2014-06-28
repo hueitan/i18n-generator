@@ -1,0 +1,9 @@
+# rootPath = 1
+# number = 5
+
+i18n=> , en , zh_TW , de , my
+you , you , 你 , Sie , kamu
+I , I , 我 , ich , Saya
+love , love , 喜歡 , liebe , cinta
+eat , eat , 吃 , essen , makan
+ilovegithub , i love github , 我愛 Github , ich liebe Github , Saya cinta pada Github

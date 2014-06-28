@@ -19,6 +19,8 @@ i18nGenerator(inputFile, outputPath);
 i18nGenerator(inputFile, outputPath, true);
 // or given js-beautify options
 i18nGenerator(inputFile, outputPath, { indent_size: 2 });
+// settings split variable (default as |)
+i18nGenerator(inputFile,outputPath, options, ',');
 
 // options => https://github.com/beautify-web/js-beautify#options
 ```
