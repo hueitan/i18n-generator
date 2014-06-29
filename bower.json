@@ -1,0 +1,23 @@
+{
+  "name": "i18n-generator",
+  "version": "0.1.1",
+  "homepage": "https://github.com/huei90/i18n-generator",
+  "authors": [
+    "Huei Tan"
+  ],
+  "description": "i18n generator for node and web",
+  "main": "i18n-generator.js",
+  "keywords": [
+    "i18n-generator",
+    "i18n",
+    "json",
+    "localization"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

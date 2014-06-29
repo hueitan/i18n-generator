@@ -1,0 +1,45 @@
+{
+  "name": "i18n-generator",
+  "version": "0.1.1",
+  "description": "i18n generator for node and web",
+  "main": "i18n-generator.js",
+  "bin": {
+    "i18n": "cli.js"
+  },
+  "homepage": "https://github.com/huei90/i18n-generator",
+  "bugs": "https://github.com/huei90/i18n-generator/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huei90/i18n-generator"
+  },
+  "author": {
+    "name": "Huei Tan",
+    "email": "huei90@gmail.com",
+    "url": "https://github.com/huei90/"
+  },
+  "scripts": {
+    "test": "grunt",
+    "browser": "browserify i18n-generator.js > browser.js"
+  },
+  "license": "MIT",
+  "preferGlobal": "true",
+  "keywords": [
+    "i18n-generator",
+    "i18n",
+    "json",
+    "localization"
+  ],
+  "dependencies": {
+    "js-beautify": "^1.5.1",
+    "multiline": "~0.3.4"
+  },
+  "devDependencies": {
+    "browserify": "^4.2.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt-contrib-watch": "^0.6.1",
+    "jshint-stylish": "^0.2.0",
+    "load-grunt-tasks": "^0.4.0",
+    "time-grunt": "^0.3.1"
+  }
+}
