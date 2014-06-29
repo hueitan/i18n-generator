@@ -73,7 +73,14 @@ function i18nFileGenerate(output, options) {
 }
 
 function readFileAndGenerating(input, split) {
-    var data =  fs.readFileSync(input);
+    var data;
+
+    try {
+        data = fs.readFileSync(input);
+    } catch (e) {
+        data = input;
+    }
+
     var remaining = '';
 
     if (split) {
@@ -96,6 +103,7 @@ function readFileAndGenerating(input, split) {
         i18nGenerating(remaining);
     }
 }
+
 module.exports = function (input, output, options, split) {
 
 
@@ -114,10 +122,18 @@ module.exports = function (input, output, options, split) {
 module.exports.get = function (input, split, cb) {
 
     readFileAndGenerating(input, split);
-    
+
     cb(null, variable.i18n);
 };
 
+// basic
 // module.exports('test/input.txt', 'test/temp');
+
+// options splitter
 // module.exports('test/inputComma.txt', 'test/temp', null, ',');
+
+// using callback
 // module.exports.get('test/input.txt', '|', function (err, data) {console.log(data);});
+
+// using input string data
+// module.exports.get('i18n=> | en | zh_TW | de | my\nyou | you | 你 | Sie | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan\nilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github', '|', function (err, data) {console.log(data);});

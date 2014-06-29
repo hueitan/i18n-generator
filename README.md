@@ -25,13 +25,15 @@ i18nGenerator(inputFile,outputPath, options, ',');
 // options => https://github.com/beautify-web/js-beautify#options
 
 // get output data api
-i18nGenerator.get(inputFile, ',', function (err, data) {
+// input can be file (.txt) or string (data)
+i18nGenerator.get(input, ',', function (err, data) {
     console.log(data);
     // => output i18n data
 });
-}
 ```
 
+**javascript**
+var i18nGenerator = require('i18n-generator');
 **cli**
 
 ```bash

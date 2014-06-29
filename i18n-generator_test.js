@@ -102,5 +102,24 @@ exports.i18nGenerator = {
       });
 
       test.done();
+  },
+  browserify: function (test) {
+      test.expect(4);
+
+      var input = 'i18n=> | en | zh_TW | de | my\nyou | you | 你 | Sie | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan\nilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github';
+
+      var enObject = {"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github"},
+          deObject = {"you":"Sie","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"},
+          myObject = {"you":"kamu","I":"Saya","love":"cinta","eat":"makan","ilovegithub":"Saya cinta pada Github"},
+          zhObject = {"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"};
+
+      i18nGenerator.get(input, '|', function (err, data) {
+          test.deepEqual(data.en, enObject, 'en object');
+          test.deepEqual(data.de, deObject, 'de object');
+          test.deepEqual(data.my, myObject, 'my object');
+          test.deepEqual(data.zh_TW, zhObject, 'zh_TW object');
+      });
+
+      test.done();
   }
 };
