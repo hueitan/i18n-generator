@@ -32,8 +32,6 @@ var variableName = {
 };
 
 var variable = {
-    rootPath: null,
-    number: null,
     split: '|',
     language: [],
     i18n: {}
@@ -43,34 +41,17 @@ function i18nGenerating(data) {
 
     var output;
 
-    if (data[0] === '#') {
+    output = data.split(variable.split);
 
-        /**
-         * Case for #
-         * Not yet implement
-
-        output = data.split('=');
-
-        if (output[0].indexOf(variableName.rootPath) !== -1) {
-            variable.rootPath = output[1].trim();
-        } else if (output[0].indexOf(variableName.number) !== -1) {
-            variable.number = output[1].trim();
+    if (output[0].indexOf(variableName.i18nGo) !== -1) {
+        for (var i = 1; i < output.length; i++) {
+            var lang = output[i].trim();
+            variable.language.push(lang);
+            variable.i18n[lang] = {};
         }
-        */
-
     } else {
-        output = data.split(variable.split);
-
-        if (output[0].indexOf(variableName.i18nGo) !== -1) {
-            for (var i = 1; i < output.length; i++) {
-                var lang = output[i].trim();
-                variable.language.push(lang);
-                variable.i18n[lang] = {};
-            }
-        } else {
-            for (var j = 1; j < output.length; j++) {
-                variable.i18n[variable.language[j - 1]][output[0].trim()] = output[j].trim();
-            }
+        for (var j = 1; j < output.length; j++) {
+            variable.i18n[variable.language[j - 1]][output[0].trim()] = output[j].trim();
         }
     }
 
