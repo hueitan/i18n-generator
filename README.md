@@ -1,11 +1,11 @@
 # i18n-generator [![Build Status](https://secure.travis-ci.org/huei90/i18n-generator.png?branch=master)](http://travis-ci.org/huei90/i18n-generator)
 
-Easy your i18n file => i18n generator for node
+i18n generator for node and web
 
 ## Getting Started
-Install the module with: `npm install -g i18n-generator`
 
 **node.js**
+Install the module with: `npm install -g i18n-generator`
 
 ```javascript
 var i18nGenerator = require('i18n-generator');
@@ -40,8 +40,8 @@ i18nGenerator.get(inputData, ',', function (err, data) {
     // => output i18n data
 });
 ```
-**cli**
 
+**cli**
 ```bash
 $ i18n input.txt output
 ```

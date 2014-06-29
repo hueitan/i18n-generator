@@ -1,8 +1,8 @@
 {
   "name": "i18n-generator",
   "repo": "https://github.com/huei90/i18n-generator",
-  "description": "Easy your i18n file => i18n generator for node",
-  "version": "0.1.0",
+  "description": "i18n generator for node and web",
+  "version": "0.1.1",
   "keywords": [
     "i18n-generator",
     "i18n",
