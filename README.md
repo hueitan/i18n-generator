@@ -23,6 +23,13 @@ i18nGenerator(inputFile, outputPath, { indent_size: 2 });
 i18nGenerator(inputFile,outputPath, options, ',');
 
 // options => https://github.com/beautify-web/js-beautify#options
+
+// get output data api
+i18nGenerator.get(inputFile, ',', function (err, data) {
+    console.log(data);
+    // => output i18n data
+});
+}
 ```
 
 **cli**

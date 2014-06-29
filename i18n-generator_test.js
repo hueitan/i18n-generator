@@ -85,5 +85,22 @@ exports.i18nGenerator = {
       test.equal(zhJson, '{"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"}', 'zh_TW json');
 
       test.done();
+  },
+  getMethod: function (test) {
+      test.expect(4);
+
+      var enObject = {"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github"},
+          deObject = {"you":"Sie","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"},
+          myObject = {"you":"kamu","I":"Saya","love":"cinta","eat":"makan","ilovegithub":"Saya cinta pada Github"},
+          zhObject = {"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"};
+
+      i18nGenerator.get('test/inputComma.txt', ',' ,function (err, data) {
+          test.deepEqual(data.en, enObject, 'en object');
+          test.deepEqual(data.de, deObject, 'de object');
+          test.deepEqual(data.my, myObject, 'my object');
+          test.deepEqual(data.zh_TW, zhObject, 'zh_TW object');
+      });
+
+      test.done();
   }
 };

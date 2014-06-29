@@ -57,7 +57,7 @@ function i18nGenerating(data) {
 
 }
 
-function i18nGenerate(output, options) {
+function i18nFileGenerate(output, options) {
 
     for (var lang in variable.i18n) {
         var writeText = JSON.stringify(variable.i18n[lang]);
@@ -72,18 +72,12 @@ function i18nGenerate(output, options) {
 
 }
 
-module.exports = function (input, output, options, split) {
-
+function readFileAndGenerating(input, split) {
     var data =  fs.readFileSync(input);
-    var isExist = fs.existsSync(output);
     var remaining = '';
 
     if (split) {
         variable.split = split;
-    }
-
-    if (!isExist) {
-        fs.mkdirSync(output);
     }
 
     remaining += data;
@@ -101,10 +95,29 @@ module.exports = function (input, output, options, split) {
     if (remaining.length > 0) {
         i18nGenerating(remaining);
     }
+}
+module.exports = function (input, output, options, split) {
 
-    i18nGenerate(output, options || null);
 
+    var isExist = fs.existsSync(output);
+
+    if (!isExist) {
+        fs.mkdirSync(output);
+    }
+
+    readFileAndGenerating(input, split);
+
+    i18nFileGenerate(output, options || null);
+
+};
+
+module.exports.get = function (input, split, cb) {
+
+    readFileAndGenerating(input, split);
+    
+    cb(null, variable.i18n);
 };
 
 // module.exports('test/input.txt', 'test/temp');
 // module.exports('test/inputComma.txt', 'test/temp', null, ',');
+// module.exports.get('test/input.txt', '|', function (err, data) {console.log(data);});
