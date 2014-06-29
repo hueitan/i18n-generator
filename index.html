@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="author" content="Huei Tan"/>
+    <meta name="title" content="i18n Online Generate Tools"/>
+    <meta name="description" content="i18n generator for node and web browser "/>
+    <meta name="keywords" content="i18n-generator, i18n, json, localization"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"/>
+    <title>i18n Online Generate Tools</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.2/css/foundation.min.css"/>
+    <style>
+        #github-link {
+            position: fixed;
+            right: 1.5em;
+            bottom: 1.5em;
+            opacity: 0.6;
+            -o-transition:.5s;
+            -ms-transition:.5s;
+            -moz-transition:.5s;
+            -webkit-transition:.5s;
+            transition:.5s;
+        }
+
+        #github-link:hover {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="small-12 medium-12 large-12 large-centered columns">
+        <h1>i18n Online Generate Tools</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 medium-6 large-6 columns">
+        <h2>input</h2>
+        <label>Input Data</label>
+        <textarea id="input" style="height:150px;" placeholder="data"></textarea>
+    </div>
+    <div class="small-12 medium-6 large-6 columns">
+        <h2>output</h2>
+        <div id="output"><span>-- place input first --</span></div>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+        <button onclick="generate()">generate</button>
+        <p>Copy example:<p>
+        <span>i18n=> | en | zh_TW | de | my</span><br/>
+        <span>you | you | 你 | Sie | kamu</span><br/>
+        <span>I | I | 我 | ich | Saya</span><br/>
+        <span>love | love | 喜歡 | liebe | cinta</span><br/>
+        <span>neat | eat | 吃 | essen | makan</span><br/>
+        <span>ilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github</span></p>
+
+        <a href="http://github.com/huei90/i18n-generator" target="_self"><img src="//huei90.github.io/angular-validation/demo/iconmonstr-github-10-icon-128.png" id="github-link" alt="Fork me on Github"/></a>
+    </div>
+</div>
+
+
+
+    <script src="./browser.js"></script>
+    <script>
+        var generate = function () {
+            var input = '',
+                outputEl;
+
+            input = document.getElementById('input').value;
+            outputEl = document.getElementById('output');
+            outputEl.innerHTML = '';
+
+            i18n(input, '|', function (err, data) {
+                for (var k in data) {
+                    var label = document.createElement('label');
+                    label.innerText = k + '.json';
+                    var input = document.createElement('textarea');
+                    input.type = 'text';
+                    input.value = JSON.stringify(data[k]);
+                    outputEl.appendChild(label);
+                    outputEl.appendChild(input);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

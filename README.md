@@ -2,6 +2,7 @@
 
 i18n generator for node and web
 
+[i18n Online Generate Tools](http://huei90.github.io/i18n-generator)
 ## Getting Started
 
 **node.js**<br/>
