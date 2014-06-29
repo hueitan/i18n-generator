@@ -126,6 +126,12 @@ module.exports.get = function (input, split, cb) {
     cb(null, variable.i18n);
 };
 
+/* browser window */
+if (typeof window !== 'undefined') {
+    // If we're running a web page
+    window.i18n = module.exports.get;
+}
+
 // basic
 // module.exports('test/input.txt', 'test/temp');
 

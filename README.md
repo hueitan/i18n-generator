@@ -4,7 +4,7 @@ i18n generator for node and web
 
 ## Getting Started
 
-**node.js**
+**node.js**<br/>
 Install the module with: `npm install -g i18n-generator`
 
 ```javascript
@@ -32,10 +32,15 @@ i18nGenerator.get(input, ',', function (err, data) {
 });
 ```
 
-**javascript**
+**browser**
+
+```html
+<script src="i18n-generator.js"></script>
+```
+
 ```js
-var i18nGenerator = require('i18n-generator');
-i18nGenerator.get(inputData, ',', function (err, data) {
+var i18n = window.i18n;
+i18n(inputData, ',', function (err, data) {
     console.log(data);
     // => output i18n data
 });
