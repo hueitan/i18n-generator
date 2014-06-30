@@ -142,4 +142,4 @@ if (typeof window !== 'undefined') {
 // module.exports.get('test/input.txt', '|', function (err, data) {console.log(data);});
 
 // using input string data
-// module.exports.get('i18n=> | en | zh_TW | de | my\nyou | you | 你 | Sie | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan\nilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github', '|', function (err, data) {console.log(data);});
+// module.exports.get('i18n=> | en | zh_TW | de | my\nyou | you | 你 | Du | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan\nilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github', '|', function (err, data) {console.log(data);});

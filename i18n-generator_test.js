@@ -51,7 +51,7 @@ exports.i18nGenerator = {
           zhJson = fs.readFileSync('./test/temp/zh_TW.json');
 
       test.equal(enJson, '{"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github"}', 'en json');
-      test.equal(deJson, '{"you":"Sie","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"}', 'de json');
+      test.equal(deJson, '{"you":"Du","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"}', 'de json');
       test.equal(myJson, '{"you":"kamu","I":"Saya","love":"cinta","eat":"makan","ilovegithub":"Saya cinta pada Github"}', 'my json');
       test.equal(zhJson, '{"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"}', 'zh_TW json');
 
@@ -80,7 +80,7 @@ exports.i18nGenerator = {
           zhJson = fs.readFileSync('./test/temp/zh_TW.json');
 
       test.equal(enJson, '{"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github"}', 'en json');
-      test.equal(deJson, '{"you":"Sie","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"}', 'de json');
+      test.equal(deJson, '{"you":"Du","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"}', 'de json');
       test.equal(myJson, '{"you":"kamu","I":"Saya","love":"cinta","eat":"makan","ilovegithub":"Saya cinta pada Github"}', 'my json');
       test.equal(zhJson, '{"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"}', 'zh_TW json');
 
@@ -90,7 +90,7 @@ exports.i18nGenerator = {
       test.expect(4);
 
       var enObject = {"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github"},
-          deObject = {"you":"Sie","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"},
+          deObject = {"you":"Du","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"},
           myObject = {"you":"kamu","I":"Saya","love":"cinta","eat":"makan","ilovegithub":"Saya cinta pada Github"},
           zhObject = {"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"};
 
@@ -106,10 +106,10 @@ exports.i18nGenerator = {
   browserify: function (test) {
       test.expect(4);
 
-      var input = 'i18n=> | en | zh_TW | de | my\nyou | you | 你 | Sie | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan\nilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github';
+      var input = 'i18n=> | en | zh_TW | de | my\nyou | you | 你 | Du | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan\nilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github';
 
       var enObject = {"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github"},
-          deObject = {"you":"Sie","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"},
+          deObject = {"you":"Du","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"},
           myObject = {"you":"kamu","I":"Saya","love":"cinta","eat":"makan","ilovegithub":"Saya cinta pada Github"},
           zhObject = {"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"};
 
