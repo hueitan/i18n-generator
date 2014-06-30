@@ -76,7 +76,7 @@
             i18n(input, '|', function (err, data) {
                 for (var k in data) {
                     var label = document.createElement('label');
-                    label.innerText = k + '.json';
+                    label.textContent = k + '.json';
                     var input = document.createElement('textarea');
                     input.type = 'text';
                     input.value = JSON.stringify(data[k]);
