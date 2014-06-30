@@ -57,7 +57,7 @@ $ i18n input.txt output
 **input file**
 ```
 i18n=> | en | zh_TW | de | my
-you | you | 你 | Sie | kamu
+you | you | 你 | Du | kamu
 I | I | 我 | ich | Saya
 love | love | 喜歡 | liebe | cinta
 eat | eat | 吃 | essen | makan
@@ -66,7 +66,7 @@ ilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada
 
 **output (de.json)**
 ```js
-{"you":"Sie","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"}
+{"you":"Du","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"}
 ```
 **output (en.json)**
 ```js
