@@ -27,8 +27,6 @@ var fs = require('fs'),
     beautify = require('js-beautify').js_beautify;
 
 var variableName = {
-    rootPath: 'rootPath',
-    number: 'number',
     i18nGo: 'i18n=>'
 };
 
@@ -50,10 +48,12 @@ function i18nGenerating(data) {
             variable.language.push(lang);
             variable.i18n[lang] = {};
         }
-    } else {
-        for (var j = 1; j < output.length; j++) {
-            variable.i18n[variable.language[j - 1]][output[0].trim()] = output[j].trim();
-        }
+
+        return;
+    }
+
+    for (var j = 1; j < output.length; j++) {
+        variable.i18n[variable.language[j - 1]][output[0].trim()] = output[j].trim();
     }
 
 }
@@ -128,8 +128,8 @@ module.exports.get = function (input, split, cb) {
 };
 
 /* browser window */
-if (typeof window !== "undefined") {
-    // If we're running a web page and don't have either of the above, add our one global
+if (typeof window !== 'undefined') {
+    // If we're running a web page
     window.i18n = module.exports.get;
 }
 
@@ -143,7 +143,7 @@ if (typeof window !== "undefined") {
 // module.exports.get('test/input.txt', '|', function (err, data) {console.log(data);});
 
 // using input string data
-// module.exports.get('i18n=> | en | zh_TW | de | my\nyou | you | 你 | Sie | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan\nilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github', '|', function (err, data) {console.log(data);});
+// module.exports.get('i18n=> | en | zh_TW | de | my\nyou | you | 你 | Du | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan\nilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github', '|', function (err, data) {console.log(data);});
 },{"fs":2,"js-beautify":3}],2:[function(require,module,exports){
 
 },{}],3:[function(require,module,exports){

@@ -26,8 +26,6 @@ var fs = require('fs'),
     beautify = require('js-beautify').js_beautify;
 
 var variableName = {
-    rootPath: 'rootPath',
-    number: 'number',
     i18nGo: 'i18n=>'
 };
 
@@ -49,10 +47,12 @@ function i18nGenerating(data) {
             variable.language.push(lang);
             variable.i18n[lang] = {};
         }
-    } else {
-        for (var j = 1; j < output.length; j++) {
-            variable.i18n[variable.language[j - 1]][output[0].trim()] = output[j].trim();
-        }
+
+        return;
+    }
+
+    for (var j = 1; j < output.length; j++) {
+        variable.i18n[variable.language[j - 1]][output[0].trim()] = output[j].trim();
     }
 
 }
