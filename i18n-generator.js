@@ -26,14 +26,30 @@ var fs = require('fs'),
     beautify = require('js-beautify').js_beautify;
 
 var variableName = {
-    i18nGo: 'i18n=>'
+    i18nGo: 'i18n=>',
+    nestStart: '=>',
+    nestEnd: '<='
 };
 
 var variable = {
     split: '|',
     language: [],
+    nestObject: [],
     i18n: {}
 };
+
+// 這個太神啦！ http://stackoverflow.com/questions/5484673/javascript-how-to-dynamically-create-nested-objects-using-object-names-given-by
+function assign(obj, keyPath, value) {
+    var lastKeyIndex = keyPath.length - 1;
+    for (var i = 0; i < lastKeyIndex; ++i) {
+        var key = keyPath[i];
+        if (!(key in obj)) {
+            obj[key] = {};
+        }
+        obj = obj[key];
+    }
+    obj[keyPath[lastKeyIndex]] = value;
+}
 
 function i18nGenerating(data) {
 
@@ -41,6 +57,7 @@ function i18nGenerating(data) {
 
     output = data.split(variable.split);
 
+    // i18n=> (i18nGo)
     if (output[0].indexOf(variableName.i18nGo) !== -1) {
         for (var i = 1; i < output.length; i++) {
             var lang = output[i].trim();
@@ -51,8 +68,27 @@ function i18nGenerating(data) {
         return;
     }
 
+    // => (nestStart)
+    if (output[0].indexOf(variableName.nestStart) !== -1) {
+        variable.nestObject.push(output[0].trim().replace(variableName.nestStart, '').trim());
+        return;
+    }
+
+    // <= (nestEnd)
+    if (output[0].indexOf(variableName.nestEnd) !== -1) {
+        variable.nestObject = [];
+        return;
+    }
+
+    // generating json object
     for (var j = 1; j < output.length; j++) {
-        variable.i18n[variable.language[j - 1]][output[0].trim()] = output[j].trim();
+        if (variable.nestObject.length) {
+            variable.nestObject.push(output[0].trim());
+            assign(variable.i18n[variable.language[j-1]], variable.nestObject, output[j].trim());
+            variable.nestObject.pop();
+        } else if (variable.nestObject.length === 0) {
+            variable.i18n[variable.language[j - 1]][output[0].trim()] = output[j].trim();
+        }
     }
 
 }

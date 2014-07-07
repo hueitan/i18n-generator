@@ -81,5 +81,19 @@ ilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada
 {"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"}
 ```
 
+**Try Nest**
+```
+ilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github
+=> global
+sleep | sleep | 睡覺 | schlafen | tidur
+morning | morning | 早安 | Morgen | pagi
+=> people
+Ahmad | Ahmad | Ahmad | Ahmad | Ahmad
+<=
+Back | back | 回來 | terug | balik
+```
+
+*It's work! Cool right ? You can try it on online demo tools*
+
 ## License
 Copyright (c) 2014 Huei Tan. Licensed under the MIT license.

@@ -27,14 +27,30 @@ var fs = require('fs'),
     beautify = require('js-beautify').js_beautify;
 
 var variableName = {
-    i18nGo: 'i18n=>'
+    i18nGo: 'i18n=>',
+    nestStart: '=>',
+    nestEnd: '<='
 };
 
 var variable = {
     split: '|',
     language: [],
+    nestObject: [],
     i18n: {}
 };
+
+// 這個太神啦！ http://stackoverflow.com/questions/5484673/javascript-how-to-dynamically-create-nested-objects-using-object-names-given-by
+function assign(obj, keyPath, value) {
+    var lastKeyIndex = keyPath.length - 1;
+    for (var i = 0; i < lastKeyIndex; ++i) {
+        var key = keyPath[i];
+        if (!(key in obj)) {
+            obj[key] = {};
+        }
+        obj = obj[key];
+    }
+    obj[keyPath[lastKeyIndex]] = value;
+}
 
 function i18nGenerating(data) {
 
@@ -42,6 +58,7 @@ function i18nGenerating(data) {
 
     output = data.split(variable.split);
 
+    // i18n=> (i18nGo)
     if (output[0].indexOf(variableName.i18nGo) !== -1) {
         for (var i = 1; i < output.length; i++) {
             var lang = output[i].trim();
@@ -52,8 +69,27 @@ function i18nGenerating(data) {
         return;
     }
 
+    // => (nestStart)
+    if (output[0].indexOf(variableName.nestStart) !== -1) {
+        variable.nestObject.push(output[0].trim().replace(variableName.nestStart, '').trim());
+        return;
+    }
+
+    // <= (nestEnd)
+    if (output[0].indexOf(variableName.nestEnd) !== -1) {
+        variable.nestObject = [];
+        return;
+    }
+
+    // generating json object
     for (var j = 1; j < output.length; j++) {
-        variable.i18n[variable.language[j - 1]][output[0].trim()] = output[j].trim();
+        if (variable.nestObject.length) {
+            variable.nestObject.push(output[0].trim());
+            assign(variable.i18n[variable.language[j-1]], variable.nestObject, output[j].trim());
+            variable.nestObject.pop();
+        } else if (variable.nestObject.length === 0) {
+            variable.i18n[variable.language[j - 1]][output[0].trim()] = output[j].trim();
+        }
     }
 
 }
@@ -144,9 +180,7 @@ if (typeof window !== 'undefined') {
 
 // using input string data
 // module.exports.get('i18n=> | en | zh_TW | de | my\nyou | you | 你 | Du | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan\nilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github', '|', function (err, data) {console.log(data);});
-},{"fs":2,"js-beautify":3}],2:[function(require,module,exports){
-
-},{}],3:[function(require,module,exports){
+},{"fs":6,"js-beautify":2}],2:[function(require,module,exports){
 /**
 The following batches are equivalent:
 
@@ -203,7 +237,7 @@ if (typeof define === "function" && define.amd) {
 }
 
 
-},{"./lib/beautify":6,"./lib/beautify-css":4,"./lib/beautify-html":5}],4:[function(require,module,exports){
+},{"./lib/beautify":5,"./lib/beautify-css":3,"./lib/beautify-html":4}],3:[function(require,module,exports){
 (function (global){
 /*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
 /*
@@ -586,7 +620,7 @@ if (typeof define === "function" && define.amd) {
 }());
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 (function (global){
 /*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
 /*
@@ -1435,7 +1469,7 @@ if (typeof define === "function" && define.amd) {
 }());
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./beautify-css.js":4,"./beautify.js":6}],6:[function(require,module,exports){
+},{"./beautify-css.js":3,"./beautify.js":5}],5:[function(require,module,exports){
 (function (global){
 /*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
 /*
@@ -3137,4 +3171,6 @@ if (typeof define === "function" && define.amd) {
 }());
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],6:[function(require,module,exports){
+
 },{}]},{},[1])
