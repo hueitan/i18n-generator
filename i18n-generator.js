@@ -172,7 +172,10 @@ if (typeof window !== 'undefined') {
 // module.exports('test/input.txt', 'test/temp');
 
 // options splitter
-// module.exports('test/inputComma.txt', 'test/temp', null, ',');
+// module.exports('test/inputComma.csv', 'test/temp', null, ',');
+
+// options splitter tab (\t)
+// module.exports('test/inputTab.tsv', 'test/temp', null, '\t');
 
 // using callback
 // module.exports.get('test/input.txt', '|', function (err, data) {console.log(data);});
