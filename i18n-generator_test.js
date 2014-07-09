@@ -60,7 +60,7 @@ exports.i18nGenerator = {
   optionsSplit: function (test) {
       test.expect(8);
 
-      i18nGenerator('test/inputComma.csv', 'test/temp', false, ',');
+      i18nGenerator('test/inputComma.csv', 'test/temp', false, 'csv');
 
       // exists check
       var en = fs.existsSync('./test/temp/en.json'),
@@ -94,7 +94,7 @@ exports.i18nGenerator = {
           myObject = {"you":"kamu","I":"Saya","love":"cinta","eat":"makan","ilovegithub":"Saya cinta pada Github"},
           zhObject = {"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"};
 
-      i18nGenerator.get('test/inputComma.csv', ',' ,function (err, data) {
+      i18nGenerator.get('test/inputComma.csv', 'csv' ,function (err, data) {
           test.deepEqual(data.en, enObject, 'en object');
           test.deepEqual(data.de, deObject, 'de object');
           test.deepEqual(data.my, myObject, 'my object');
@@ -113,7 +113,7 @@ exports.i18nGenerator = {
           myObject = {"you":"kamu","I":"Saya","love":"cinta","eat":"makan","ilovegithub":"Saya cinta pada Github"},
           zhObject = {"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"};
 
-      i18nGenerator.get(input, '|', function (err, data) {
+      i18nGenerator.get(input, 'pipe', function (err, data) {
           test.deepEqual(data.en, enObject, 'en object');
           test.deepEqual(data.de, deObject, 'de object');
           test.deepEqual(data.my, myObject, 'my object');
@@ -154,7 +154,7 @@ exports.i18nGenerator = {
   tsvSplitter: function (test) {
       test.expect(8);
 
-      i18nGenerator('test/inputTab.tsv', 'test/temp', false, '\t');
+      i18nGenerator('test/inputTab.tsv', 'test/temp', false, 'tsv');
 
       // exists check
       var en = fs.existsSync('./test/temp/en.json'),

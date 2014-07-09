@@ -80,7 +80,7 @@
             outputEl = document.getElementById('output');
             outputEl.innerHTML = '';
 
-            i18n(input, '|', function (err, data) {
+            i18n(input, 'pipe', function (err, data) {
                 for (var k in data) {
                     var label = document.createElement('label');
                     label.textContent = k + '.json';

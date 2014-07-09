@@ -120,8 +120,24 @@ function readFileAndGenerating(input, split) {
 
     var remaining = '';
 
-    if (split) {
-        variable.split = split;
+    // setting up the splitter
+    // default is pipe |
+    if (!split) {
+        split = 'pipe';
+    }
+
+    switch (split) {
+        case 'csv':
+            variable.split = ',';
+            break;
+        case 'tsv':
+            variable.split = '\t';
+            break;
+        case 'pipe':
+            variable.split = '|';
+            break;
+        default:
+            variable.split = split;
     }
 
     remaining += data;
@@ -173,13 +189,16 @@ if (typeof window !== 'undefined') {
 // module.exports('test/input.txt', 'test/temp');
 
 // options splitter
-// module.exports('test/inputComma.txt', 'test/temp', null, ',');
+// module.exports('test/inputComma.csv', 'test/temp', null, 'csv');
+
+// options splitter tab (\t)
+// module.exports('test/inputTab.tsv', 'test/temp', null, 'tab');
 
 // using callback
-// module.exports.get('test/input.txt', '|', function (err, data) {console.log(data);});
+// module.exports.get('test/input.txt', 'pipe', function (err, data) {console.log(data);});
 
 // using input string data
-// module.exports.get('i18n=> | en | zh_TW | de | my\nyou | you | 你 | Du | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan\nilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github', '|', function (err, data) {console.log(data);});
+// module.exports.get('i18n=> | en | zh_TW | de | my\nyou | you | 你 | Du | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan\nilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github', 'pipe', function (err, data) {console.log(data);});
 },{"fs":6,"js-beautify":2}],2:[function(require,module,exports){
 /**
 The following batches are equivalent:

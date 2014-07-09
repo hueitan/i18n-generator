@@ -21,9 +21,13 @@ i18nGenerator(inputFile, outputPath, true);
 // or given js-beautify options
 i18nGenerator(inputFile, outputPath, { indent_size: 2 });
 // settings split variable (default as |)
-i18nGenerator(inputFile,outputPath, options, ',');
+i18nGenerator(inputFile,outputPath, options, 'csv');
 
 // options => https://github.com/beautify-web/js-beautify#options
+// splitter support
+// | => pipe (default)
+// , => csv
+// \t => tsv
 
 // get output data api
 // input can be file (.txt) or string (data)
@@ -94,6 +98,7 @@ Back | back | 回來 | terug | balik
 ```
 
 *It's work! Cool right ? You can try it on online demo tools*
+
 
 ## License
 Copyright (c) 2014 Huei Tan. Licensed under the MIT license.
