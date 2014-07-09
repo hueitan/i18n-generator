@@ -31,7 +31,7 @@ i18nGenerator(inputFile,outputPath, options, 'csv');
 
 // get output data api
 // input can be file (.txt) or string (data)
-i18nGenerator.get(input, ',', function (err, data) {
+i18nGenerator.get(input, 'csv', function (err, data) {
     console.log(data);
     // => output i18n data
 });
@@ -97,8 +97,7 @@ Ahmad | Ahmad | Ahmad | Ahmad | Ahmad
 Back | back | 回來 | terug | balik
 ```
 
-*It's work! Cool right ? You can try it on online demo tools*
-
+*It's work! Cool right ? You can try it on [online demo tools](http://huei90.github.io/i18n-generator)*
 
 ## License
 Copyright (c) 2014 Huei Tan. Licensed under the MIT license.
