@@ -35,6 +35,11 @@ i18nGenerator.get(input, 'csv', function (err, data) {
     console.log(data);
     // => output i18n data
 });
+
+// or you can
+i18nGenerator.get(input, function (err, data) {
+	console.log(data);
+});
 ```
 
 **browser**
@@ -45,9 +50,15 @@ i18nGenerator.get(input, 'csv', function (err, data) {
 
 ```js
 var i18n = window.i18n;
-i18n(inputData, ',', function (err, data) {
+i18n(inputData, 'csv', function (err, data) {
     console.log(data);
     // => output i18n data
+});
+
+// or easily
+i18n(inputData, function (err, data) {
+	console.log(data);
+	// => split default pipe |
 });
 ```
 

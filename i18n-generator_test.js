@@ -87,7 +87,7 @@ exports.i18nGenerator = {
       test.done();
   },
   getMethod: function (test) {
-      test.expect(4);
+      test.expect(8);
 
       var enObject = {"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github"},
           deObject = {"you":"Du","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"},
@@ -95,6 +95,13 @@ exports.i18nGenerator = {
           zhObject = {"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"};
 
       i18nGenerator.get('test/inputComma.csv', 'csv' ,function (err, data) {
+          test.deepEqual(data.en, enObject, 'en object');
+          test.deepEqual(data.de, deObject, 'de object');
+          test.deepEqual(data.my, myObject, 'my object');
+          test.deepEqual(data.zh_TW, zhObject, 'zh_TW object');
+      });
+
+      i18nGenerator.get('test/input.txt', function (err, data) {
           test.deepEqual(data.en, enObject, 'en object');
           test.deepEqual(data.de, deObject, 'de object');
           test.deepEqual(data.my, myObject, 'my object');

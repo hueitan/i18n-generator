@@ -174,6 +174,10 @@ module.exports = function (input, output, options, split) {
 
 module.exports.get = function (input, split, cb) {
 
+    if (typeof split === 'function') {
+        cb = split;
+        split = 'pipe';
+    }
     readFileAndGenerating(input, split);
 
     cb(null, variable.i18n);
@@ -198,8 +202,10 @@ if (typeof window !== 'undefined') {
 // module.exports.get('test/input.txt', 'pipe', function (err, data) {console.log(data);});
 
 // using input string data
-// module.exports.get('i18n=> | en | zh_TW | de | my\nyou | you | 你 | Du | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan\nilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github', 'pipe', function (err, data) {console.log(data);});
-},{"fs":6,"js-beautify":2}],2:[function(require,module,exports){
+// module.exports.get('i18n=> | en | zh_TW | de | my\nyou | you | 你 | Du | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan\nilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github', function (err, data) {console.log(data);});
+},{"fs":2,"js-beautify":3}],2:[function(require,module,exports){
+
+},{}],3:[function(require,module,exports){
 /**
 The following batches are equivalent:
 
@@ -256,7 +262,7 @@ if (typeof define === "function" && define.amd) {
 }
 
 
-},{"./lib/beautify":5,"./lib/beautify-css":3,"./lib/beautify-html":4}],3:[function(require,module,exports){
+},{"./lib/beautify":6,"./lib/beautify-css":4,"./lib/beautify-html":5}],4:[function(require,module,exports){
 (function (global){
 /*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
 /*
@@ -639,7 +645,7 @@ if (typeof define === "function" && define.amd) {
 }());
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 (function (global){
 /*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
 /*
@@ -1488,7 +1494,7 @@ if (typeof define === "function" && define.amd) {
 }());
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./beautify-css.js":3,"./beautify.js":5}],5:[function(require,module,exports){
+},{"./beautify-css.js":4,"./beautify.js":6}],6:[function(require,module,exports){
 (function (global){
 /*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
 /*
@@ -3190,6 +3196,4 @@ if (typeof define === "function" && define.amd) {
 }());
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],6:[function(require,module,exports){
-
 },{}]},{},[1])
