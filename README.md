@@ -65,6 +65,9 @@ i18n(inputData, function (err, data) {
 **cli**
 ```bash
 $ i18n input.txt output
+
+# watch file
+$ i18n input.txt output --watch
 ```
 
 ## Workflow
