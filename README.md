@@ -114,4 +114,4 @@ Back | back | 回來 | terug | balik
 *It's work! Cool right ? You can try it on [online demo tools](http://huei90.github.io/i18n-generator)*
 
 ## License
-Copyright (c) 2014 Huei Tan. Licensed under the MIT license.
+Copyright (c) 2014 [Huei Tan](https://github.com/huei90). Licensed under the MIT license.
