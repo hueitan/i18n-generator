@@ -14,10 +14,11 @@ var outputFileParam = userArgs[3];
 if (userArgs.indexOf('-h') !== -1 || userArgs.indexOf('--help') !== -1) {
     return console.log(multiline.stripIndent(function () { /*
 
-    i18n <input file> <output path>
+    i18n <input file> <output path> --watch
 
     example
     i18n input.txt output
+    i18n input.txt output --watch
      */
     }));
 }
@@ -29,13 +30,13 @@ if (userArgs.indexOf('-v') !== -1 || userArgs.indexOf('--version') !== -1) {
 
 // i18n test/input.txt test/temp --watch
 if (userArgs.indexOf('--watch') !== -1) {
-	fs.watch(inputFileParam, function () {
-		console.log('file ' + inputFileParam + ' changed!');
-		i18nGenerator(inputFileParam, outputFileParam);
-	});
+    fs.watch(inputFileParam, function () {
+        console.log('file ' + inputFileParam + ' changed!');
+        i18nGenerator(inputFileParam, outputFileParam);
+    });
 } else {
-	// i18n test/input.txt test/temp
-	i18nGenerator(inputFileParam, outputFileParam);
+    // i18n test/input.txt test/temp
+    i18nGenerator(inputFileParam, outputFileParam);
 }
 
 
