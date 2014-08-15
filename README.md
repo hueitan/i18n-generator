@@ -1,4 +1,7 @@
-# i18n-generator [![Build Status](https://secure.travis-ci.org/huei90/i18n-generator.png?branch=master)](http://travis-ci.org/huei90/i18n-generator)
+# i18n-generator 
+[![Build Status](https://secure.travis-ci.org/huei90/i18n-generator.png?branch=master)](http://travis-ci.org/huei90/i18n-generator)
+[![Dependency Status](https://david-dm.org/huei90/i18n-generator.svg)](https://david-dm.org/huei90/i18n-generator)
+[![devDependency Status](https://david-dm.org/huei90/i18n-generator/dev-status.svg)](https://david-dm.org/huei90/i18n-generator#info=devDependencies)
 
 i18n generator for node and web
 
