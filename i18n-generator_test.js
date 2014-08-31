@@ -186,5 +186,34 @@ exports.i18nGenerator = {
       test.equal(zhJson, '{"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"}', 'zh_TW json');
 
       test.done();
+  },
+  commaAdvance: function (test) {
+      test.expect(8);
+
+      i18nGenerator('test/inputCommaAdvance.csv', 'test/temp', false, 'csv');
+
+      // exists check
+      var en = fs.existsSync('./test/temp/en.json'),
+          de = fs.existsSync('./test/temp/de.json'),
+          my = fs.existsSync('./test/temp/my.json'),
+          zh = fs.existsSync('./test/temp/zh_TW.json');
+
+      test.equal(en, true, 'en.json should be generated');
+      test.equal(de, true, 'de.json should be generated');
+      test.equal(my, true, 'my.json should be generated');
+      test.equal(zh, true, 'zh.json should be generated');
+
+      // content check
+      var enJson = fs.readFileSync('./test/temp/en.json'),
+          deJson = fs.readFileSync('./test/temp/de.json'),
+          myJson = fs.readFileSync('./test/temp/my.json'),
+          zhJson = fs.readFileSync('./test/temp/zh_TW.json');
+
+      test.equal(enJson, '{"ilovegithub":"i love github but u"}', 'en json');
+      test.equal(deJson, '{"ilovegithub":"was du gesagt"}', 'de json');
+      test.equal(myJson, '{"ilovegithub":"saya pun"}', 'my json');
+      test.equal(zhJson, '{"ilovegithub":"我愛 github,但我也愛 git"}', 'zh_TW json');
+
+      test.done();
   }
 };

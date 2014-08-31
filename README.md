@@ -102,8 +102,15 @@ ilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada
 {"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"}
 ```
 
+**Try Advance**
+```
+i18n=> , en , zh_TW , de , my
+ilovegithub, "i love github but u", "我愛 github,但我也愛 git", was du gesagt, "saya pun"
+```
+
 **Try Nest**
 ```
+i18n=> , en , zh_TW , de , my
 ilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github
 => global
 sleep | sleep | 睡覺 | schlafen | tidur
