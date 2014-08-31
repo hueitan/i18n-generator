@@ -52,11 +52,43 @@ function assign(obj, keyPath, value) {
     obj[keyPath[lastKeyIndex]] = value;
 }
 
+function magicSplit(data) {
+    var output = [],
+        index = 0,
+        tempString = '',
+        isInside = false;
+
+    while (data.length) {
+        if (data[0] === '"') {
+            isInside = !isInside;
+            data = data.slice(1, data.length);
+            continue;
+        } else if (data[0] === '\\' && isInside) {
+            tempString += data[1];
+            data = data.slice(2, data.length);
+            continue;
+        } else if (data[0] === variable.split && !isInside) {
+            output[index] = tempString;
+            tempString = '';
+            index++;
+            data = data.slice(1, data.length);
+            continue;
+        }
+
+        tempString += data[0];
+        data = data.slice(1, data.length);
+    }
+
+    output[index] = tempString;
+    // console.log(output)
+    return output;
+}
+
 function i18nGenerating(data) {
 
     var output;
 
-    output = data.split(variable.split);
+    output = magicSplit(data);
 
     // i18n=> (i18nGo)
     if (output[0].indexOf(variableName.i18nGo) !== -1) {
@@ -203,6 +235,9 @@ if (typeof window !== 'undefined') {
 
 // using input string data
 // module.exports.get('i18n=> | en | zh_TW | de | my\nyou | you | 你 | Du | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan\nilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github', function (err, data) {console.log(data);});
+
+// (advanced) ignore splitter if " occur
+// module.exports('test/inputCommaAdvance.csv', 'test/temp', null, 'csv');
 },{"fs":2,"js-beautify":3}],2:[function(require,module,exports){
 
 },{}],3:[function(require,module,exports){
