@@ -2,7 +2,7 @@
   "name": "i18n-generator",
   "repo": "https://github.com/huei90/i18n-generator",
   "description": "i18n generator for node and web",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "keywords": [
     "i18n-generator",
     "i18n",
