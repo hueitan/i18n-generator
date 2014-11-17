@@ -34,12 +34,12 @@
     "multiline": "~1.0.0"
   },
   "devDependencies": {
-    "browserify": "^5.10.1",
+    "browserify": "^6.3.2",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-nodeunit": "^0.4.1",
     "grunt-contrib-watch": "^0.6.1",
-    "jshint-stylish": "^0.4.0",
-    "load-grunt-tasks": "^0.6.0",
+    "jshint-stylish": "^1.0.0",
+    "load-grunt-tasks": "^1.0.0",
     "time-grunt": "^1.0.0"
   }
 }
