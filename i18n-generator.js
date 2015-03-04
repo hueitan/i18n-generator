@@ -38,6 +38,15 @@ var variable = {
     i18n: {}
 };
 
+function resetVariable() {
+    variable = {
+        split: '|',
+        language: [],
+        nestObject: [],
+        i18n: {}
+    };
+}
+
 // 這個太神啦！ http://stackoverflow.com/questions/5484673/javascript-how-to-dynamically-create-nested-objects-using-object-names-given-by
 function assign(obj, keyPath, value) {
     var lastKeyIndex = keyPath.length - 1;
@@ -148,6 +157,9 @@ function readFileAndGenerating(input, split) {
     } catch (e) {
         data = input;
     }
+
+    // reset variable
+    resetVariable();
 
     var remaining = '';
 
