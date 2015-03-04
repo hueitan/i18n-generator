@@ -1,110 +1,180 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta name="author" content="Huei Tan"/>
-    <meta name="title" content="i18n Online Generate Tools"/>
-    <meta name="description" content="i18n generator for node and web browser "/>
-    <meta name="keywords" content="i18n-generator, i18n, json, localization"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="author" content="Huei Tan" />
+    <meta name="title" content="i18n Online Generate Tools" />
+    <meta name="description" content="i18n generator for node and web browser " />
+    <meta name="keywords" content="i18n-generator, i18n, json, localization" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui" />
     <title>i18n Online Generate Tools</title>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.2/css/foundation.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.2/css/foundation.min.css" />
     <style>
         #github-link {
             position: fixed;
             right: 1.5em;
             bottom: 1.5em;
             opacity: 0.6;
-            -o-transition:.5s;
-            -ms-transition:.5s;
-            -moz-transition:.5s;
-            -webkit-transition:.5s;
-            transition:.5s;
+            -o-transition: .5s;
+            -ms-transition: .5s;
+            -moz-transition: .5s;
+            -webkit-transition: .5s;
+            transition: .5s;
         }
-
+        
         #github-link:hover {
             opacity: 1;
         }
-
+        
         [placeholder]:focus::-webkit-input-placeholder {
             transition: opacity 1.5s 1.5s ease;
             opacity: 0;
         }
     </style>
 </head>
+
 <body>
-<div class="row">
-    <div class="small-12 medium-12 large-12 large-centered columns">
-        <h1>i18n Online Generate Tools</h1>
+    <div class="row">
+        <div class="small-12 medium-12 large-12 large-centered columns">
+            <h1>i18n Online Generate Tools</h1>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="small-12 medium-6 large-6 columns">
-        <h2>input</h2>
-        <label>Input Data</label>
-        <textarea id="input" style="height:150px;"
-                  placeholder="i18n=> | en | zh_TW | de | my\nyou | you | 你 | Du | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan"
-                ></textarea>
+    <div class="row">
+        <div class="small-12 medium-6 large-6 columns">
+            <h2>input</h2>
+            <label>Input Data</label>
+            <textarea id="input" style="height:150px;" placeholder="i18n=> | en | zh_TW | de | my\nyou | you | 你 | Du | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan"></textarea>
+        </div>
+        <div class="small-12 medium-6 large-6 columns">
+            <h2>output</h2>
+            <div id="output"><span>-- place input first and click <strong>generate</strong> --</span>
+            </div>
+        </div>
     </div>
-    <div class="small-12 medium-6 large-6 columns">
-        <h2>output</h2>
-        <div id="output"><span>-- place input first --</span></div>
+    <div class="row">
+        <div class="small-12 medium-12 large-12 columns">
+            <button onclick="generate()">generate</button>
+            <button onclick="importDataFromSheet()">Get Data from Google Sheet</button>
+            <p>Google Sheet data:
+                <br/> <a href="https://docs.google.com/spreadsheets/d/14BsnsXmm4B4mk_WxUb80VfbfKch0xGFZZ__tpH67_CA/edit?usp=sharing" target="_blank">https://docs.google.com/spreadsheets/d/14BsnsXmm4B4mk_WxUb80VfbfKch0xGFZZ__tpH67_CA/edit?usp=sharing</a>
+                <p>
+                    <p>Copy example:
+                        <p>
+                            <span>i18n=> | en | zh_TW | de | my</span>
+                            <br/>
+                            <span>you | you | 你 | Du | kamu</span>
+                            <br/>
+                            <span>I | I | 我 | ich | Saya</span>
+                            <br/>
+                            <span>love | love | 喜歡 | liebe | cinta</span>
+                            <br/>
+                            <span>eat | eat | 吃 | essen | makan</span>
+                            <br/>
+                            <span>ilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github</span>
+                            <br/>
+                            <span>=> global</span>
+                            <br/>
+                            <span>sleep | sleep | 睡覺 | schlafen | tidur</span>
+                            <br/>
+                            <span>morning | morning | 早安 | Morgen | pagi</span>
+                            <br/>
+                            <span>=> people</span>
+                            <br/>
+                            <span>Ahmad | Ahmad | Ahmad | Ahmad | Ahmad</span>
+                            <br/>
+                            <span><=</span>
+                            <br/>
+                            <span>Back | back | 回來 | terug | balik</span>
+                            <br/>
+
+                            <a href="http://github.com/huei90/i18n-generator" target="_self"><img src="//huei90.github.io/angular-validation/demo/iconmonstr-github-10-icon-128.png" id="github-link" alt="Fork me on Github" />
+                            </a>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="small-12 medium-12 large-12 columns">
-        <button onclick="generate()">generate</button>
-        <p>Copy example:<p>
-        <span>i18n=> | en | zh_TW | de | my</span><br/>
-        <span>you | you | 你 | Du | kamu</span><br/>
-        <span>I | I | 我 | ich | Saya</span><br/>
-        <span>love | love | 喜歡 | liebe | cinta</span><br/>
-        <span>eat | eat | 吃 | essen | makan</span><br/>
-        <span>ilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github</span><br/>
-        <span>=> global</span><br/>
-        <span>sleep | sleep | 睡覺 | schlafen | tidur</span><br/>
-        <span>morning | morning | 早安 | Morgen | pagi</span><br/>
-        <span>=> people</span><br/>
-        <span>Ahmad | Ahmad | Ahmad | Ahmad | Ahmad</span><br/>
-        <span><=</span><br/>
-        <span>Back | back | 回來 | terug | balik</span><br/>
 
-        <a href="http://github.com/huei90/i18n-generator" target="_self"><img src="//huei90.github.io/angular-validation/demo/iconmonstr-github-10-icon-128.png" id="github-link" alt="Fork me on Github"/></a>
-    </div>
-</div>
-
-
-
-    <script src="./browser.js"></script>
+    <script src='/demo/tabletop.js'></script>
+    <script src='./browser.js'></script>
     <script>
-        (function () {
+        (function() {
             // multi-line <textarea> placeholder
             // http://jsfiddle.net/Ltj5bxk3/
             var input = document.getElementById('input');
             input.placeholder = input.placeholder.replace(/\\n/g, '\n');
         })();
 
-        var generate = function () {
+        var generate = function() {
             var input = '',
                 outputEl;
 
             input = document.getElementById('input').value;
             outputEl = document.getElementById('output');
+
             outputEl.innerHTML = '';
 
-            i18n(input, 'pipe', function (err, data) {
+            i18n(input, 'pipe', function(err, data) {
+                console.log('pipe: ', data)
                 for (var k in data) {
                     var label = document.createElement('label');
                     label.textContent = k + '.json';
-                    var input = document.createElement('textarea');
-                    input.type = 'text';
-                    input.value = JSON.stringify(data[k]);
+                    var textarea = document.createElement('textarea');
+                    textarea.type = 'text';
+                    textarea.value = JSON.stringify(data[k]);
                     outputEl.appendChild(label);
-                    outputEl.appendChild(input);
+                    outputEl.appendChild(textarea);
                 }
+            });
+        }
+
+        var importDataFromSheet = function() {
+            // loading data ing
+            document.getElementById('input').value = 'loading... please wait';
+
+            var dataString = '';
+            Tabletop.init({
+                key: 'https://docs.google.com/spreadsheets/d/14BsnsXmm4B4mk_WxUb80VfbfKch0xGFZZ__tpH67_CA/pubhtml',
+                callback: function(data, tabletop) {
+                    var title = '';
+                    var language = '';
+                    var keyLength = Object.keys(data[0]).length;
+                    var iteration = 0;
+
+                    // title
+                    for (var key in data[0]) {
+                        iteration += 1;
+
+                        if (iteration === keyLength) {
+                            title += key;
+                            iteration = 0;
+                        } else {
+                            title += key;
+                            title += ' | '
+                        }
+                    }
+
+                    // language
+                    data.forEach(function(value, key) {
+
+                        for (var key2 in value) {
+                            iteration += 1;
+                            language += value[key2];
+                            if (iteration % keyLength === 0) {
+                                language += '\n';
+                            } else {
+                                language += ' | ';
+                            }
+                        }
+                    });
+
+                    document.getElementById('input').value = title;
+                    document.getElementById('input').value += '\n';
+                    document.getElementById('input').value += language;
+                },
+                simpleSheet: true
             });
         }
     </script>
 </body>
+
 </html>
