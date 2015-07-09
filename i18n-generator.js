@@ -128,7 +128,8 @@ function i18nGenerating(data) {
             assign(variable.i18n[variable.language[j-1]], variable.nestObject, output[j].trim());
             variable.nestObject.pop();
         } else if (variable.nestObject.length === 0) {
-            variable.i18n[variable.language[j - 1]][output[0].trim()] = output[j].trim();
+            // GP Do not include the key if it contains an empty string!
+            variable.i18n[variable.language[j - 1]][output[0].trim()] = output[j].trim() || undefined;
         }
     }
 
