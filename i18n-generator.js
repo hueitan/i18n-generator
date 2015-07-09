@@ -125,11 +125,12 @@ function i18nGenerating(data) {
     for (var j = 1; j < output.length; j++) {
         if (variable.nestObject.length) {
             variable.nestObject.push(output[0].trim());
-            assign(variable.i18n[variable.language[j-1]], variable.nestObject, output[j].trim());
+            if (output[j].trim()) {
+                assign(variable.i18n[variable.language[j-1]], variable.nestObject, output[j].trim());
+            }
             variable.nestObject.pop();
-        } else if (variable.nestObject.length === 0) {
-            // GP Do not include the key if it contains an empty string!
-            variable.i18n[variable.language[j - 1]][output[0].trim()] = output[j].trim() || undefined;
+        } else if (variable.nestObject.length === 0 && output[j].trim()) {
+            variable.i18n[variable.language[j - 1]][output[0].trim()] = output[j].trim();
         }
     }
 
