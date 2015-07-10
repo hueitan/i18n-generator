@@ -5,12 +5,13 @@
   "authors": [
     "Huei Tan"
   ],
-  "description": "i18n generator for node and web",
+  "description": "i18n json files generator for node, web browser and command line",
   "main": "i18n-generator.js",
   "keywords": [
     "i18n-generator",
     "i18n",
     "json",
+    "csv",
     "localization"
   ],
   "license": "MIT",

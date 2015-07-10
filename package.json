@@ -1,7 +1,7 @@
 {
   "name": "i18n-generator",
   "version": "0.2.0",
-  "description": "i18n generator for node and web",
+  "description": "i18n json files generator for node, web browser and command line",
   "main": "i18n-generator.js",
   "bin": {
     "i18n": "cli.js"
@@ -27,6 +27,7 @@
     "i18n-generator",
     "i18n",
     "json",
+    "csv",
     "localization"
   ],
   "dependencies": {

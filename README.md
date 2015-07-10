@@ -3,7 +3,7 @@
 [![Dependency Status](https://david-dm.org/huei90/i18n-generator.svg)](https://david-dm.org/huei90/i18n-generator)
 [![devDependency Status](https://david-dm.org/huei90/i18n-generator/dev-status.svg)](https://david-dm.org/huei90/i18n-generator#info=devDependencies)
 
-i18n generator for node and web
+i18n json files generator for node, web browser and command line
 
 [i18n Online Generate Tools](http://huei90.github.io/i18n-generator)
 ## Getting Started
