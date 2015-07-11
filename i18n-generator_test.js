@@ -158,6 +158,35 @@ exports.i18nGenerator = {
 
       test.done();
   },
+  nestObjectEmptyKey: function (test) {
+      test.expect(8);
+
+      i18nGenerator('test/inputNestEmptyKey.txt', 'test/temp');
+
+      // exists check
+      var en = fs.existsSync('./test/temp/en.json'),
+          de = fs.existsSync('./test/temp/de.json'),
+          my = fs.existsSync('./test/temp/my.json'),
+          zh = fs.existsSync('./test/temp/zh_TW.json');
+
+      test.equal(en, true, 'en.json should be generated');
+      test.equal(de, true, 'de.json should be generated');
+      test.equal(my, true, 'my.json should be generated');
+      test.equal(zh, true, 'zh.json should be generated');
+
+      // content check
+      var enJson = fs.readFileSync('./test/temp/en.json'),
+          deJson = fs.readFileSync('./test/temp/de.json'),
+          myJson = fs.readFileSync('./test/temp/my.json'),
+          zhJson = fs.readFileSync('./test/temp/zh_TW.json');
+
+      test.equal(enJson, '{"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github","global":{"sleep":"sleep","morning":"morning"},"Back":"back"}', 'en json');
+      test.equal(deJson, '{"you":"Du","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github","global":{"sleep":"schlafen","morning":"Morgen","people":{"Ahmad":"Ahmad"}},"Back":"terug"}', 'de json');
+      test.equal(myJson, '{"I":"Saya","eat":"makan","ilovegithub":"Saya cinta pada Github","global":{"sleep":"tidur","morning":"pagi","people":{"Ahmad":"Ahmad"}},"Back":"balik"}', 'my json');
+      test.equal(zhJson, '{"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github","global":{"sleep":"睡覺","morning":"早安","people":{"Ahmad":"Ahmad"}},"Back":"回來"}', 'zh_TW json');
+
+      test.done();
+  },
   tsvSplitter: function (test) {
       test.expect(8);
 
