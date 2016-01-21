@@ -8,8 +8,9 @@ module.exports = function (grunt) {
 
   // Project configuration.
   grunt.initConfig({
+    test_file: 'test/*_test.js',
     nodeunit: {
-      files: ['*_test.js']
+      files: ['<%= test_file %>']
     },
     jshint: {
       options: {
@@ -20,10 +21,10 @@ module.exports = function (grunt) {
         src: 'Gruntfile.js'
       },
       lib: {
-        src: ['i18n-generator.js']
+        src: ['index.js']
       },
       test: {
-        src: ['i18n-generator_test.js']
+        src: ['<%= test_file %>']
       }
     },
     watch: {

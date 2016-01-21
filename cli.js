@@ -5,7 +5,7 @@
 var fs = require('fs');
 
 var multiline = require('multiline');
-var i18nGenerator = require('./i18n-generator');
+var i18nGenerator = require('./index');
 
 var userArgs = process.argv;
 var inputFileParam = userArgs[2];
@@ -38,5 +38,3 @@ if (userArgs.indexOf('--watch') !== -1) {
     // i18n test/input.txt test/temp
     i18nGenerator(inputFileParam, outputFileParam);
 }
-
-

@@ -1,7 +1,7 @@
 'use strict';
 
 var fs = require('fs');
-var i18nGenerator = require('./i18n-generator.js');
+var i18nGenerator = require('../index');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -31,13 +31,13 @@ exports.i18nGenerator = {
   generate: function (test) {
       test.expect(8);
 
-      i18nGenerator('test/input.txt', 'test/temp');
+      i18nGenerator('test/fixtures/input.txt', 'test/fixtures/temp');
 
       // exists check
-      var en = fs.existsSync('./test/temp/en.json'),
-          de = fs.existsSync('./test/temp/de.json'),
-          my = fs.existsSync('./test/temp/my.json'),
-          zh = fs.existsSync('./test/temp/zh_TW.json');
+      var en = fs.existsSync('./test/fixtures/temp/en.json'),
+          de = fs.existsSync('./test/fixtures/temp/de.json'),
+          my = fs.existsSync('./test/fixtures/temp/my.json'),
+          zh = fs.existsSync('./test/fixtures/temp/zh_TW.json');
 
       test.equal(en, true, 'en.json should be generated');
       test.equal(de, true, 'fr.json should be generated');
@@ -45,10 +45,10 @@ exports.i18nGenerator = {
       test.equal(zh, true, 'zh.json should be generated');
 
       // content check
-      var enJson = fs.readFileSync('./test/temp/en.json'),
-          deJson = fs.readFileSync('./test/temp/de.json'),
-          myJson = fs.readFileSync('./test/temp/my.json'),
-          zhJson = fs.readFileSync('./test/temp/zh_TW.json');
+      var enJson = fs.readFileSync('./test/fixtures/temp/en.json'),
+          deJson = fs.readFileSync('./test/fixtures/temp/de.json'),
+          myJson = fs.readFileSync('./test/fixtures/temp/my.json'),
+          zhJson = fs.readFileSync('./test/fixtures/temp/zh_TW.json');
 
       test.equal(enJson, '{"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github"}', 'en json');
       test.equal(deJson, '{"you":"Du","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"}', 'de json');
@@ -60,13 +60,13 @@ exports.i18nGenerator = {
   optionsSplit: function (test) {
       test.expect(8);
 
-      i18nGenerator('test/inputComma.csv', 'test/temp', false, 'csv');
+      i18nGenerator('test/fixtures/inputComma.csv', 'test/fixtures/temp', false, 'csv');
 
       // exists check
-      var en = fs.existsSync('./test/temp/en.json'),
-          de = fs.existsSync('./test/temp/de.json'),
-          my = fs.existsSync('./test/temp/my.json'),
-          zh = fs.existsSync('./test/temp/zh_TW.json');
+      var en = fs.existsSync('./test/fixtures/temp/en.json'),
+          de = fs.existsSync('./test/fixtures/temp/de.json'),
+          my = fs.existsSync('./test/fixtures/temp/my.json'),
+          zh = fs.existsSync('./test/fixtures/temp/zh_TW.json');
 
       test.equal(en, true, 'en.json should be generated');
       test.equal(de, true, 'de.json should be generated');
@@ -74,10 +74,10 @@ exports.i18nGenerator = {
       test.equal(zh, true, 'zh.json should be generated');
 
       // content check
-      var enJson = fs.readFileSync('./test/temp/en.json'),
-          deJson = fs.readFileSync('./test/temp/de.json'),
-          myJson = fs.readFileSync('./test/temp/my.json'),
-          zhJson = fs.readFileSync('./test/temp/zh_TW.json');
+      var enJson = fs.readFileSync('./test/fixtures/temp/en.json'),
+          deJson = fs.readFileSync('./test/fixtures/temp/de.json'),
+          myJson = fs.readFileSync('./test/fixtures/temp/my.json'),
+          zhJson = fs.readFileSync('./test/fixtures/temp/zh_TW.json');
 
       test.equal(enJson, '{"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github"}', 'en json');
       test.equal(deJson, '{"you":"Du","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"}', 'de json');
@@ -94,14 +94,14 @@ exports.i18nGenerator = {
           myObject = {"you":"kamu","I":"Saya","love":"cinta","eat":"makan","ilovegithub":"Saya cinta pada Github"},
           zhObject = {"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"};
 
-      i18nGenerator.get('test/inputComma.csv', 'csv' ,function (err, data) {
+      i18nGenerator.get('test/fixtures/inputComma.csv', 'csv' ,function (err, data) {
           test.deepEqual(data.en, enObject, 'en object');
           test.deepEqual(data.de, deObject, 'de object');
           test.deepEqual(data.my, myObject, 'my object');
           test.deepEqual(data.zh_TW, zhObject, 'zh_TW object');
       });
 
-      i18nGenerator.get('test/input.txt', function (err, data) {
+      i18nGenerator.get('test/fixtures/input.txt', function (err, data) {
           test.deepEqual(data.en, enObject, 'en object');
           test.deepEqual(data.de, deObject, 'de object');
           test.deepEqual(data.my, myObject, 'my object');
@@ -132,13 +132,13 @@ exports.i18nGenerator = {
   nestObject: function (test) {
       test.expect(8);
 
-      i18nGenerator('test/inputNest.txt', 'test/temp');
+      i18nGenerator('test/fixtures/inputNest.txt', 'test/fixtures/temp');
 
       // exists check
-      var en = fs.existsSync('./test/temp/en.json'),
-          de = fs.existsSync('./test/temp/de.json'),
-          my = fs.existsSync('./test/temp/my.json'),
-          zh = fs.existsSync('./test/temp/zh_TW.json');
+      var en = fs.existsSync('./test/fixtures/temp/en.json'),
+          de = fs.existsSync('./test/fixtures/temp/de.json'),
+          my = fs.existsSync('./test/fixtures/temp/my.json'),
+          zh = fs.existsSync('./test/fixtures/temp/zh_TW.json');
 
       test.equal(en, true, 'en.json should be generated');
       test.equal(de, true, 'de.json should be generated');
@@ -146,10 +146,10 @@ exports.i18nGenerator = {
       test.equal(zh, true, 'zh.json should be generated');
 
       // content check
-      var enJson = fs.readFileSync('./test/temp/en.json'),
-          deJson = fs.readFileSync('./test/temp/de.json'),
-          myJson = fs.readFileSync('./test/temp/my.json'),
-          zhJson = fs.readFileSync('./test/temp/zh_TW.json');
+      var enJson = fs.readFileSync('./test/fixtures/temp/en.json'),
+          deJson = fs.readFileSync('./test/fixtures/temp/de.json'),
+          myJson = fs.readFileSync('./test/fixtures/temp/my.json'),
+          zhJson = fs.readFileSync('./test/fixtures/temp/zh_TW.json');
 
       test.equal(enJson, '{"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github","global":{"sleep":"sleep","morning":"morning","people":{"Ahmad":"Ahmad"}},"Back":"back"}', 'en json');
       test.equal(deJson, '{"you":"Du","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github","global":{"sleep":"schlafen","morning":"Morgen","people":{"Ahmad":"Ahmad"}},"Back":"terug"}', 'de json');
@@ -161,13 +161,13 @@ exports.i18nGenerator = {
   nestObjectEmptyKey: function (test) {
       test.expect(8);
 
-      i18nGenerator('test/inputNestEmptyKey.txt', 'test/temp');
+      i18nGenerator('test/fixtures/inputNestEmptyKey.txt', 'test/fixtures/temp');
 
       // exists check
-      var en = fs.existsSync('./test/temp/en.json'),
-          de = fs.existsSync('./test/temp/de.json'),
-          my = fs.existsSync('./test/temp/my.json'),
-          zh = fs.existsSync('./test/temp/zh_TW.json');
+      var en = fs.existsSync('./test/fixtures/temp/en.json'),
+          de = fs.existsSync('./test/fixtures/temp/de.json'),
+          my = fs.existsSync('./test/fixtures/temp/my.json'),
+          zh = fs.existsSync('./test/fixtures/temp/zh_TW.json');
 
       test.equal(en, true, 'en.json should be generated');
       test.equal(de, true, 'de.json should be generated');
@@ -175,10 +175,10 @@ exports.i18nGenerator = {
       test.equal(zh, true, 'zh.json should be generated');
 
       // content check
-      var enJson = fs.readFileSync('./test/temp/en.json'),
-          deJson = fs.readFileSync('./test/temp/de.json'),
-          myJson = fs.readFileSync('./test/temp/my.json'),
-          zhJson = fs.readFileSync('./test/temp/zh_TW.json');
+      var enJson = fs.readFileSync('./test/fixtures/temp/en.json'),
+          deJson = fs.readFileSync('./test/fixtures/temp/de.json'),
+          myJson = fs.readFileSync('./test/fixtures/temp/my.json'),
+          zhJson = fs.readFileSync('./test/fixtures/temp/zh_TW.json');
 
       test.equal(enJson, '{"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github","global":{"sleep":"sleep","morning":"morning"},"Back":"back"}', 'en json');
       test.equal(deJson, '{"you":"Du","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github","global":{"sleep":"schlafen","morning":"Morgen","people":{"Ahmad":"Ahmad"}},"Back":"terug"}', 'de json');
@@ -190,13 +190,13 @@ exports.i18nGenerator = {
   tsvSplitter: function (test) {
       test.expect(8);
 
-      i18nGenerator('test/inputTab.tsv', 'test/temp', false, 'tsv');
+      i18nGenerator('test/fixtures/inputTab.tsv', 'test/fixtures/temp', false, 'tsv');
 
       // exists check
-      var en = fs.existsSync('./test/temp/en.json'),
-          de = fs.existsSync('./test/temp/de.json'),
-          my = fs.existsSync('./test/temp/my.json'),
-          zh = fs.existsSync('./test/temp/zh_TW.json');
+      var en = fs.existsSync('./test/fixtures/temp/en.json'),
+          de = fs.existsSync('./test/fixtures/temp/de.json'),
+          my = fs.existsSync('./test/fixtures/temp/my.json'),
+          zh = fs.existsSync('./test/fixtures/temp/zh_TW.json');
 
       test.equal(en, true, 'en.json should be generated');
       test.equal(de, true, 'de.json should be generated');
@@ -204,10 +204,10 @@ exports.i18nGenerator = {
       test.equal(zh, true, 'zh.json should be generated');
 
       // content check
-      var enJson = fs.readFileSync('./test/temp/en.json'),
-          deJson = fs.readFileSync('./test/temp/de.json'),
-          myJson = fs.readFileSync('./test/temp/my.json'),
-          zhJson = fs.readFileSync('./test/temp/zh_TW.json');
+      var enJson = fs.readFileSync('./test/fixtures/temp/en.json'),
+          deJson = fs.readFileSync('./test/fixtures/temp/de.json'),
+          myJson = fs.readFileSync('./test/fixtures/temp/my.json'),
+          zhJson = fs.readFileSync('./test/fixtures/temp/zh_TW.json');
 
       test.equal(enJson, '{"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github"}', 'en json');
       test.equal(deJson, '{"you":"Du","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"}', 'de json');
@@ -219,13 +219,13 @@ exports.i18nGenerator = {
   commaAdvance: function (test) {
       test.expect(8);
 
-      i18nGenerator('test/inputCommaAdvance.csv', 'test/temp', false, 'csv');
+      i18nGenerator('test/fixtures/inputCommaAdvance.csv', 'test/fixtures/temp', false, 'csv');
 
       // exists check
-      var en = fs.existsSync('./test/temp/en.json'),
-          de = fs.existsSync('./test/temp/de.json'),
-          my = fs.existsSync('./test/temp/my.json'),
-          zh = fs.existsSync('./test/temp/zh_TW.json');
+      var en = fs.existsSync('./test/fixtures/temp/en.json'),
+          de = fs.existsSync('./test/fixtures/temp/de.json'),
+          my = fs.existsSync('./test/fixtures/temp/my.json'),
+          zh = fs.existsSync('./test/fixtures/temp/zh_TW.json');
 
       test.equal(en, true, 'en.json should be generated');
       test.equal(de, true, 'de.json should be generated');
@@ -233,10 +233,10 @@ exports.i18nGenerator = {
       test.equal(zh, true, 'zh.json should be generated');
 
       // content check
-      var enJson = fs.readFileSync('./test/temp/en.json'),
-          deJson = fs.readFileSync('./test/temp/de.json'),
-          myJson = fs.readFileSync('./test/temp/my.json'),
-          zhJson = fs.readFileSync('./test/temp/zh_TW.json');
+      var enJson = fs.readFileSync('./test/fixtures/temp/en.json'),
+          deJson = fs.readFileSync('./test/fixtures/temp/de.json'),
+          myJson = fs.readFileSync('./test/fixtures/temp/my.json'),
+          zhJson = fs.readFileSync('./test/fixtures/temp/zh_TW.json');
 
       test.equal(enJson, '{"ilovegithub":"i love github but u"}', 'en json');
       test.equal(deJson, '{"ilovegithub":"was du gesagt"}', 'de json');

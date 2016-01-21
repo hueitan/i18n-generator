@@ -19,7 +19,7 @@
   },
   "scripts": {
     "test": "grunt",
-    "browser": "browserify i18n-generator.js > browser.js"
+    "browser": "browserify index.js > browser.js"
   },
   "license": "MIT",
   "preferGlobal": "true",
@@ -35,11 +35,11 @@
     "multiline": "~1.0.0"
   },
   "devDependencies": {
-    "browserify": "^9.0.3",
-    "grunt-contrib-jshint": "^0.11.0",
+    "browserify": "^13.0.0",
+    "grunt-contrib-jshint": "^0.12.0",
     "grunt-contrib-nodeunit": "^0.4.1",
     "grunt-contrib-watch": "^0.6.1",
-    "jshint-stylish": "^1.0.0",
+    "jshint-stylish": "^2.1.0",
     "load-grunt-tasks": "^3.1.0",
     "time-grunt": "^1.0.0"
   }
