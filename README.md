@@ -3,13 +3,15 @@
 [![Dependency Status](https://david-dm.org/huei90/i18n-generator.svg)](https://david-dm.org/huei90/i18n-generator)
 [![devDependency Status](https://david-dm.org/huei90/i18n-generator/dev-status.svg)](https://david-dm.org/huei90/i18n-generator#info=devDependencies)
 
-i18n json files generator for node, web browser and command line
+i18n json files generator for **node**, **web browser** and **command line**.
 
 [i18n Online Generate Tools](http://huei90.github.io/i18n-generator)
+![screen shot 2016-01-21 at 5 11 23 pm](https://cloud.githubusercontent.com/assets/2560096/12476009/bce5cf48-c061-11e5-93d9-94a9176e3377.png)
+
 ## Getting Started
 
 **node.js**<br/>
-Install the module with: `npm install -g i18n-generator`
+Install the module with: `npm install i18n-generator`
 
 ```javascript
 var i18nGenerator = require('i18n-generator');
@@ -124,4 +126,4 @@ Back | back | 回來 | terug | balik
 *It's work! Cool right ? You can try it on [online demo tools](http://huei90.github.io/i18n-generator)*
 
 ## License
-Copyright (c) 2014 [Huei Tan](https://github.com/huei90). Licensed under the MIT license.
+Copyright (c) 2014-2016 [Huei Tan](https://github.com/huei90). Licensed under the MIT license.
