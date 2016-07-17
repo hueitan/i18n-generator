@@ -156,7 +156,7 @@ function readFileAndGenerating(input, split) {
     if(!Array.isArray(input)) {
         input = [input];
     }
-    console.log(input);
+    resetVariable();
     for(var i = 0; i < input.length; i++) {
         try {
             data += fs.readFileSync(input[i]);
@@ -165,7 +165,6 @@ function readFileAndGenerating(input, split) {
             data = input;
         }
     }
-    console.log(data);
     var remaining = '';
 
     // setting up the splitter
