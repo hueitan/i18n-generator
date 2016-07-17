@@ -70,7 +70,7 @@ function magicSplit(data) {
         if (data[0] === '"') {
             isInside = !isInside;
             data = data.slice(1, data.length);
-            continue;
+            continue;   
         } else if (data[0] === '\\' && isInside) {
             tempString += data[1];
             data = data.slice(2, data.length);
@@ -153,16 +153,19 @@ function i18nFileGenerate(output, options) {
 
 function readFileAndGenerating(input, split) {
     var data;
-
-    try {
-        data = fs.readFileSync(input);
-    } catch (e) {
-        data = input;
+    if(!Array.isArray(input)) {
+        input = [input];
     }
-
-    // reset variable
-    resetVariable();
-
+    console.log(input);
+    for(var i = 0; i < input.length; i++) {
+        try {
+            data += fs.readFileSync(input[i]);
+            data += '\n';
+        } catch (e) {
+            data = input;
+        }
+    }
+    console.log(data);
     var remaining = '';
 
     // setting up the splitter
@@ -188,6 +191,7 @@ function readFileAndGenerating(input, split) {
     remaining += data;
     var index = remaining.indexOf('\n');
     var last = 0;
+    //读取每一行并解析
     while (index > -1) {
         var line = remaining.substring(last, index);
         last = index + 1;
@@ -195,6 +199,7 @@ function readFileAndGenerating(input, split) {
         index = remaining.indexOf('\n', last);
     }
 
+    //防止最后一行没换行的情况
     remaining = remaining.substring(last);
 
     if (remaining.length > 0) {

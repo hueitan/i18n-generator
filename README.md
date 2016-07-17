@@ -19,15 +19,23 @@ var i18nGenerator = require('i18n-generator');
 var inputFile = 'input.txt',
     outputPath = 'output';
 
+//the first file is the schema, the next files is contents which is not need a schema
+var inputFiles = ['schema.txt', 'input1.txt', 'input2.txt']; 
+
 i18nGenerator(inputFile, outputPath);
+
+i18nGenerator(inputFiles, outputPath);
 
 // js-beautify your json
 i18nGenerator(inputFile, outputPath, true);
+
+i18nGenerator(inputFiles, outputPath, true);
 // or given js-beautify options
 i18nGenerator(inputFile, outputPath, { indent_size: 2 });
+i18nGenerator(inputFiles, outputPath, {indent_size: 2});
 // settings split variable (default as |)
 i18nGenerator(inputFile,outputPath, options, 'csv');
-
+i18nGenerator(inputFiles, outputPath, options, 'csv');
 // options => https://github.com/beautify-web/js-beautify#options
 // splitter support
 // | => pipe (default)
