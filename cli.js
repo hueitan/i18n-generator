@@ -18,6 +18,7 @@ if (userArgs.indexOf('-h') !== -1 || userArgs.indexOf('--help') !== -1) {
 
     example
     i18n input.txt output
+    i18n input.csv output
     i18n input.txt output --watch
      */
     }));
