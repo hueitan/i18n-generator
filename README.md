@@ -71,6 +71,9 @@ i18n(inputData, function (err, data) {
 ```bash
 $ i18n input.txt output
 
+# generate from csv or tsv
+$ i18n input.csv output
+
 # watch file
 $ i18n input.txt output --watch
 ```

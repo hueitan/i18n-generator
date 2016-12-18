@@ -22,7 +22,7 @@
     "browser": "browserify index.js > browser.js"
   },
   "license": "MIT",
-  "preferGlobal": "true",
+  "preferGlobal": true,
   "keywords": [
     "i18n-generator",
     "i18n",
@@ -35,10 +35,11 @@
     "multiline": "~1.0.0"
   },
   "devDependencies": {
+    "grunt":"~0.4.0",
     "browserify": "^13.0.0",
-    "grunt-contrib-jshint": "^0.12.0",
-    "grunt-contrib-nodeunit": "^0.4.1",
-    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-nodeunit": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
     "jshint-stylish": "^2.1.0",
     "load-grunt-tasks": "^3.1.0",
     "time-grunt": "^1.0.0"
