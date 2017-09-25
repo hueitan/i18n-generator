@@ -6,7 +6,7 @@
 i18n json files generator for **node**, **web browser** and **command line**.
 
 [i18n Online Generate Tools](http://hueitan.github.io/i18n-generator)
-![screen shot 2016-01-21 at 5 11 23 pm](https://cloud.githubusercontent.com/assets/2560096/12476009/bce5cf48-c061-11e5-93d9-94a9176e3377.png)
+![screen shot 2017-09-25 at 11 34 33 pm](https://user-images.githubusercontent.com/2560096/30832081-1f69446c-a24a-11e7-8f9f-ada4232b477d.png)
 
 ## Getting Started
 
