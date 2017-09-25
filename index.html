@@ -23,11 +23,11 @@
             -webkit-transition: .5s;
             transition: .5s;
         }
-        
+
         #github-link:hover {
             opacity: 1;
         }
-        
+
         [placeholder]:focus::-webkit-input-placeholder {
             transition: opacity 1.5s 1.5s ease;
             opacity: 0;
@@ -45,7 +45,7 @@
         <div class="small-12 medium-6 large-6 columns">
             <h2>input</h2>
             <label>Input Data</label>
-            <textarea id="input" style="height:150px;" placeholder="i18n=> | en | zh_TW | de | my\nyou | you | 你 | Du | kamu\nI | I | 我 | ich | Saya\nlove | love | 喜歡 | liebe | cinta\neat | eat | 吃 | essen | makan"></textarea>
+            <textarea id="input" style="height:150px;" placeholder="i18n=>, en, zh_TW, de, my\nyou, you, 你, Du, kamu\nI, I, 我, ich, Saya\nlove, love, 喜歡, liebe, cinta\neat, eat, 吃, essen, makan"></textarea>
         </div>
         <div class="small-12 medium-6 large-6 columns">
             <h2>output</h2>
@@ -57,40 +57,41 @@
         <div class="small-12 medium-12 large-12 columns">
             <button onclick="generate()">generate</button>
             <button onclick="importDataFromSheet()">Get Data from Google Sheet</button>
-            <p>Google Sheet data:
-                <br/> <a href="https://docs.google.com/spreadsheets/d/14BsnsXmm4B4mk_WxUb80VfbfKch0xGFZZ__tpH67_CA/edit?usp=sharing" target="_blank">https://docs.google.com/spreadsheets/d/14BsnsXmm4B4mk_WxUb80VfbfKch0xGFZZ__tpH67_CA/edit?usp=sharing</a>
-                <p>
-                    <p>Copy example:
-                        <p>
-                            <span>i18n=> | en | zh_TW | de | my</span>
-                            <br/>
-                            <span>you | you | 你 | Du | kamu</span>
-                            <br/>
-                            <span>I | I | 我 | ich | Saya</span>
-                            <br/>
-                            <span>love | love | 喜歡 | liebe | cinta</span>
-                            <br/>
-                            <span>eat | eat | 吃 | essen | makan</span>
-                            <br/>
-                            <span>ilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github</span>
-                            <br/>
-                            <span>=> global</span>
-                            <br/>
-                            <span>sleep | sleep | 睡覺 | schlafen | tidur</span>
-                            <br/>
-                            <span>morning | morning | 早安 | Morgen | pagi</span>
-                            <br/>
-                            <span>=> people</span>
-                            <br/>
-                            <span>Ahmad | Ahmad | Ahmad | Ahmad | Ahmad</span>
-                            <br/>
-                            <span><=</span>
-                            <br/>
-                            <span>Back | back | 回來 | terug | balik</span>
-                            <br/>
+            <h3>Google Sheet data:</h3>
+            <p><a href="https://docs.google.com/spreadsheets/d/14BsnsXmm4B4mk_WxUb80VfbfKch0xGFZZ__tpH67_CA/edit?usp=sharing" target="_blank">https://docs.google.com/spreadsheets/d/14BsnsXmm4B4mk_WxUb80VfbfKch0xGFZZ__tpH67_CA/edit?usp=sharing</a></p>
+            <h3>Copy example:</h3>
+            <p>
+                <span>i18n=>, en, zh_TW, de, my</span>
+                <br/>
+                <span>you, you, 你, Du, kamu</span>
+                <br/>
+                <span>I, I, 我, ich, Saya</span>
+                <br/>
+                <span>love, love, 喜歡, liebe, cinta</span>
+                <br/>
+                <span>eat, eat, 吃, essen, makan</span>
+                <br/>
+                <span>ilovegithub, i love github, 我愛 Github, ich liebe Github, Saya cinta pada Github</span>
+                <br/>
+                <span>=> global</span>
+                <br/>
+                <span>sleep, sleep, 睡覺, schlafen, tidur</span>
+                <br/>
+                <span>morning, morning, 早安, Morgen, pagi</span>
+                <br/>
+                <span>=> people</span>
+                <br/>
+                <span>Ahmad, Ahmad, Ahmad, Ahmad, Ahmad</span>
+                <br/>
+                <span><=</span>
+                <br/>
+                <span>Back, back, 回來, terug, balik</span>
+                <br/>
+            </p>
 
-                            <a href="http://github.com/hueitan/i18n-generator" target="_self"><img src="//hueitan.github.io/angular-validation/demo/iconmonstr-github-10-icon-128.png" id="github-link" alt="Fork me on Github" />
-                            </a>
+            <a href="http://github.com/hueitan/i18n-generator" target="_self">
+                <img src="//hueitan.github.io/angular-validation/demo/iconmonstr-github-10-icon-128.png" id="github-link" alt="Fork me on Github" />
+            </a>
         </div>
     </div>
 
@@ -100,30 +101,32 @@
         (function() {
             // multi-line <textarea> placeholder
             // http://jsfiddle.net/Ltj5bxk3/
-            var input = document.getElementById('input');
+            var input = document.querySelector('#input');
             input.placeholder = input.placeholder.replace(/\\n/g, '\n');
         })();
 
         var generate = function() {
             var input = '',
-                outputEl;
+                outputEl,
+                fragment = document.createDocumentFragment();
 
-            input = document.getElementById('input').value;
-            outputEl = document.getElementById('output');
+            input = document.querySelector('#input').value;
+            outputEl = document.querySelector('#output');
 
-            outputEl.innerHTML = '';
-
-            i18n(input, 'pipe', function(err, data) {
-                console.log('pipe: ', data)
+            i18n(input, 'csv', function(err, data) {
+                console.log('csv: ', data)
                 for (var k in data) {
                     var label = document.createElement('label');
                     label.textContent = k + '.json';
                     var textarea = document.createElement('textarea');
                     textarea.type = 'text';
                     textarea.value = JSON.stringify(data[k]);
-                    outputEl.appendChild(label);
-                    outputEl.appendChild(textarea);
+                    fragment.appendChild(label);
+                    fragment.appendChild(textarea);
                 }
+
+                outputEl.innerHTML = '';
+                outputEl.appendChild( fragment );
             });
         }
 
@@ -149,7 +152,7 @@
                             iteration = 0;
                         } else {
                             title += key;
-                            title += ' | '
+                            title += ', '
                         }
                     }
 
@@ -162,7 +165,7 @@
                             if (iteration % keyLength === 0) {
                                 language += '\n';
                             } else {
-                                language += ' | ';
+                                language += ', ';
                             }
                         }
                     });
