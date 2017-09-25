@@ -6,16 +6,16 @@
   "bin": {
     "i18n": "cli.js"
   },
-  "homepage": "https://github.com/huei90/i18n-generator",
-  "bugs": "https://github.com/huei90/i18n-generator/issues",
+  "homepage": "https://github.com/hueitan/i18n-generator",
+  "bugs": "https://github.com/hueitan/i18n-generator/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/huei90/i18n-generator"
+    "url": "https://github.com/hueitan/i18n-generator"
   },
   "author": {
     "name": "Huei Tan",
     "email": "huei90@gmail.com",
-    "url": "https://github.com/huei90/"
+    "url": "https://github.com/hueitan/"
   },
   "scripts": {
     "test": "grunt",
@@ -35,7 +35,7 @@
     "multiline": "~1.0.0"
   },
   "devDependencies": {
-    "grunt":"~0.4.0",
+    "grunt": "~0.4.0",
     "browserify": "^13.0.0",
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-nodeunit": "^1.0.0",

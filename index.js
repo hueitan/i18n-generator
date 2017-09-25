@@ -1,8 +1,8 @@
 /*
  * i18n-generator
- * https://github.com/huei90/i18n-generator
+ * https://github.com/hueitan/i18n-generator
  *
- * Copyright (c) 2014 Huei Tan
+ * Copyright (c) 2014-2017 Huei Tan
  * Licensed under the MIT license.
  */
 
