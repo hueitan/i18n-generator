@@ -82,12 +82,12 @@ $ i18n input.txt output --watch
 
 **input file**
 ```
-i18n=> | en | zh_TW | de | my
-you | you | 你 | Du | kamu
-I | I | 我 | ich | Saya
-love | love | 喜歡 | liebe | cinta
-eat | eat | 吃 | essen | makan
-ilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github
+i18n=>, en, zh_TW, de, my
+you, you, 你, Du, kamu
+I, I, 我, ich, Saya
+love, love, 喜歡, liebe, cinta
+eat, eat, 吃, essen, makan
+ilovegithub, i love github, 我愛 Github, ich liebe Github, Saya cinta pada Github
 ```
 
 **output (de.json)**
@@ -109,21 +109,21 @@ ilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada
 
 **Try Advance**
 ```
-i18n=> , en , zh_TW , de , my
+i18n=>, en, zh_TW, de, my
 ilovegithub, "i love github but u", "我愛 github,但我也愛 git", was du gesagt, "saya pun"
 ```
 
 **Try Nest**
 ```
-i18n=> , en , zh_TW , de , my
-ilovegithub | i love github | 我愛 Github | ich liebe Github | Saya cinta pada Github
+i18n=>, en, zh_TW, de, my
+ilovegithub, i love github, 我愛 Github, ich liebe Github, Saya cinta pada Github
 => global
-sleep | sleep | 睡覺 | schlafen | tidur
-morning | morning | 早安 | Morgen | pagi
+sleep, sleep, 睡覺, schlafen, tidur
+morning, morning, 早安, Morgen, pagi
 => people
-Ahmad | Ahmad | Ahmad | Ahmad | Ahmad
+Ahmad, Ahmad, Ahmad, Ahmad, Ahmad
 <=
-Back | back | 回來 | terug | balik
+Back, back, 回來, terug, balik
 ```
 
 *It's work! Cool right ? You can try it on [online demo tools](http://hueitan.github.io/i18n-generator)*
