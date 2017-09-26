@@ -19,6 +19,7 @@
   },
   "scripts": {
     "test": "jest",
+    "coverage": "jest --coverage",
     "browser": "browserify index.js > browser.js"
   },
   "license": "MIT",
