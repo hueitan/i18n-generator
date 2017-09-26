@@ -252,7 +252,6 @@ if (typeof window !== 'undefined') {
 
 // (advanced) ignore splitter if " occur
 // module.exports('test/inputCommaAdvance.csv', 'test/temp', null, 'csv');
-
 },{"fs":2,"js-beautify":3}],2:[function(require,module,exports){
 
 },{}],3:[function(require,module,exports){
