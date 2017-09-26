@@ -18,7 +18,7 @@
     "url": "https://github.com/hueitan/"
   },
   "scripts": {
-    "test": "grunt",
+    "test": "jest",
     "browser": "browserify index.js > browser.js"
   },
   "license": "MIT",
@@ -35,11 +35,11 @@
     "multiline": "~1.0.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.0",
     "browserify": "^13.0.0",
+    "grunt": "~0.4.0",
     "grunt-contrib-jshint": "^1.1.0",
-    "grunt-contrib-nodeunit": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
+    "jest": "^21.1.0",
     "jshint-stylish": "^2.1.0",
     "load-grunt-tasks": "^3.1.0",
     "time-grunt": "^1.0.0"
