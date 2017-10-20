@@ -130,4 +130,4 @@ Back, back, 回來, terug, balik
 *It's work! Cool right ? You can try it on [online demo tools](http://hueitan.github.io/i18n-generator)*
 
 ## License
-Copyright (c) 2014-2016 [Huei Tan](https://github.com/hueitan). Licensed under the MIT license.
+Copyright (c) 2014-Present [Huei Tan](https://github.com/hueitan). Licensed under the MIT license.
