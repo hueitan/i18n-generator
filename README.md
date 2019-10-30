@@ -1,8 +1,8 @@
 # i18n-generator
 [![Build Status](https://secure.travis-ci.org/hueitan/i18n-generator.png?branch=master)](http://travis-ci.org/hueitan/i18n-generator)
 [![Coverage Status](https://coveralls.io/repos/github/hueitan/i18n-generator/badge.svg?branch=master)](https://coveralls.io/github/hueitan/i18n-generator?branch=master)
-[![Dependency Status](https://david-dm.org/huei90/i18n-generator.svg)](https://david-dm.org/huei90/i18n-generator)
-[![devDependency Status](https://david-dm.org/huei90/i18n-generator/dev-status.svg)](https://david-dm.org/huei90/i18n-generator#info=devDependencies)
+[![Dependency Status](https://david-dm.org/hueitan/i18n-generator.svg)](https://david-dm.org/hueitan/i18n-generator)
+[![devDependency Status](https://david-dm.org/hueitan/i18n-generator/dev-status.svg)](https://david-dm.org/hueitan/i18n-generator#info=devDependencies)
 
 i18n json files generator for **node**, **web browser** and **command line**.
 
