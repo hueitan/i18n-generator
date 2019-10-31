@@ -6,7 +6,7 @@
 
 i18n json files generator for **node**, **web browser** and **command line**.
 
-[i18n Online Generate Tools](http://hueitan.github.io/i18n-generator) / [Edit Demo CSV File](https://docs.google.com/spreadsheets/d/14BsnsXmm4B4mk_WxUb80VfbfKch0xGFZZ__tpH67_CA/edit?usp=sharing)
+[i18n Online Demo Tools](http://hueitan.github.io/i18n-generator) / [Edit Demo CSV File](https://docs.google.com/spreadsheets/d/14BsnsXmm4B4mk_WxUb80VfbfKch0xGFZZ__tpH67_CA/edit?usp=sharing)
 
 ![screen shot 2017-09-25 at 11 34 33 pm](https://user-images.githubusercontent.com/2560096/30832081-1f69446c-a24a-11e7-8f9f-ada4232b477d.png)
 
@@ -15,11 +15,11 @@ i18n json files generator for **node**, **web browser** and **command line**.
 **node.js**<br/>
 Install the module with: `npm install i18n-generator`
 
-```javascript
-var i18nGenerator = require('i18n-generator');
+```es6
+const i18nGenerator = require('i18n-generator');
 
-var inputFile = 'input.txt',
-    outputPath = 'output';
+const inputFile  = 'input.txt';
+const outputPath = 'output';
 
 i18nGenerator(inputFile, outputPath);
 
@@ -38,13 +38,13 @@ i18nGenerator(inputFile,outputPath, options, 'csv');
 
 // get output data api
 // input can be file (.txt) or string (data)
-i18nGenerator.get(input, 'csv', function (err, data) {
+i18nGenerator.get(input, 'csv', (err, data) => {
     console.log(data);
     // => output i18n data
 });
 
 // or you can
-i18nGenerator.get(input, function (err, data) {
+i18nGenerator.get(input, (err, data) => {
 	console.log(data);
 });
 ```
@@ -56,14 +56,14 @@ i18nGenerator.get(input, function (err, data) {
 ```
 
 ```js
-var i18n = window.i18n;
-i18n(inputData, 'csv', function (err, data) {
+const { i18n } = window;
+i18n(inputData, 'csv', (err, data) => {
     console.log(data);
     // => output i18n data
 });
 
 // or easily
-i18n(inputData, function (err, data) {
+i18n(inputData, (err, data) => {
 	console.log(data);
 	// => split default pipe |
 });
@@ -93,29 +93,34 @@ ilovegithub, i love github, 我愛 Github, ich liebe Github, Saya cinta pada Git
 ```
 
 **output (de.json)**
-```js
+```json
 {"you":"Du","I":"ich","love":"liebe","eat":"essen","ilovegithub":"ich liebe Github"}
 ```
 **output (en.json)**
-```js
+```json
 {"you":"you","I":"I","love":"love","eat":"eat","ilovegithub":"i love github"}
 ```
 **output (my.json)**
-```js
+```json
 {"you":"kamu","I":"Saya","love":"cinta","eat":"makan","ilovegithub":"Saya cinta pada Github"}
 ```
 **output (zh_TW.json)**
-```js
+```json
 {"you":"你","I":"我","love":"喜歡","eat":"吃","ilovegithub":"我愛 Github"}
 ```
 
 **Try Advance**
+
+When the sentence includes splitter
+
 ```
 i18n=>, en, zh_TW, de, my
 ilovegithub, "i love github but u", "我愛 github,但我也愛 git", was du gesagt, "saya pun"
 ```
 
 **Try Nest**
+
+i18n-generator covers the nesting, use `=>` to open, `<=` to close
 ```
 i18n=>, en, zh_TW, de, my
 ilovegithub, i love github, 我愛 Github, ich liebe Github, Saya cinta pada Github
