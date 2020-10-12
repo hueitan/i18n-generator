@@ -35,7 +35,7 @@
     "js-beautify": "^1.10.2"
   },
   "devDependencies": {
-    "browserify": "^16.5.0",
+    "browserify": "^17.0.0",
     "jest": "^26.4.0"
   }
 }
