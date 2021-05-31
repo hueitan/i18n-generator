@@ -35,6 +35,6 @@
   },
   "devDependencies": {
     "browserify": "^17.0.0",
-    "jest": "^26.4.0"
+    "jest": "^27.0.3"
   }
 }
